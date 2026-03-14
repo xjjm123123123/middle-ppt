@@ -18,19 +18,7 @@ export function Slide4() {
               为构建高质量的训练集，我们对《豳风图》进行了超高分辨率切片，并使用 LabelMe 进行了像素级的多边形语义标注，提取了人物、农具、背景等核心要素。
             </p>
             <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10">
-              <img src="https://picsum.photos/seed/labelme/600/400?grayscale" alt="LabelMe" className="w-full h-full object-cover opacity-60 mix-blend-luminosity" referrerPolicy="no-referrer" />
-              {/* Simulated Polygon Grid */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <motion.polygon 
-                  points="20,20 80,30 70,80 30,70" 
-                  fill="rgba(255, 255, 255, 0.05)" 
-                  stroke="rgba(255, 255, 255, 0.3)" 
-                  strokeWidth="0.5"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  transition={{ duration: 2 }}
-                />
-              </svg>
+              <img src="/images/images/screen-shot/annotation.png" alt="LabelMe 标注演示" className="w-full h-full object-cover opacity-90" />
               <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded text-xs font-mono text-white/80 border border-white/10">
                 Data: 64张 2048×2048 高清切片<br/>
                 Tool: LabelMe 像素级多边形标注<br/>
