@@ -252,64 +252,16 @@ export function Slide11() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="w-full h-[500px] bg-black rounded-2xl border border-white/10 relative overflow-hidden shadow-2xl"
+          className="w-full h-[500px] bg-black rounded-2xl border border-white/10 relative overflow-hidden shadow-2xl flex items-center justify-center"
         >
-          {/* Background Ancient Painting */}
-          <img src="https://picsum.photos/seed/panorama/1200/500?grayscale" alt="全景" className="w-full h-full object-cover opacity-50 mix-blend-luminosity" referrerPolicy="no-referrer" />
-          
-          {/* Dimming Overlay (Simulated Interaction) */}
-          <motion.div 
-            animate={{ opacity: [0, 0, 0.6, 0.6, 0] }}
-            transition={{ duration: 8, repeat: Infinity, times: [0, 0.2, 0.3, 0.8, 0.9] }}
-            className="absolute inset-0 bg-black z-10"
+          <video 
+            src="/video/录屏2026-03-14 上午11.37.17.mov" 
+            className="w-full h-full object-contain" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
           />
-
-          {/* Hotspot Click */}
-          <motion.div 
-            animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute top-1/3 left-1/3 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.8)] z-20 cursor-pointer"
-          />
-
-          {/* Video Portal Popup */}
-          <motion.div 
-            animate={{ 
-              opacity: [0, 0, 1, 1, 0],
-              y: [30, 30, 0, 0, 30],
-              scale: [0.95, 0.95, 1, 1, 0.95]
-            }}
-            transition={{ duration: 8, repeat: Infinity, times: [0, 0.2, 0.3, 0.8, 0.9] }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[340px] bg-black border border-white/20 rounded-xl z-30 overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.1)]"
-          >
-            <img src="https://picsum.photos/seed/video/600/340?grayscale" alt="视频" className="w-full h-full object-cover opacity-70 mix-blend-luminosity" referrerPolicy="no-referrer" />
-            
-            {/* Semantic Annotation */}
-            <motion.div 
-              animate={{ opacity: [0, 0, 0, 1, 1, 0] }}
-              transition={{ duration: 8, repeat: Infinity, times: [0, 0.3, 0.5, 0.55, 0.75, 0.8] }}
-              className="absolute top-1/4 right-1/4 bg-black/60 backdrop-blur-md border border-white/20 p-4 rounded-lg text-sm text-white/90 shadow-xl"
-            >
-              <div className="absolute -left-8 top-1/2 w-8 h-px bg-white/50" />
-              <div className="absolute -left-8 top-1/2 w-1.5 h-1.5 rounded-full bg-white -translate-y-1/2" />
-              <span className="font-serif tracking-wide">农夫挥锄动作分析</span><br/>
-              <span className="text-xs text-white/50 font-sans mt-2 block leading-relaxed">体现了南宋时期农业劳作特征与节气规律。<br/>基于《诗经·七月》的语义关联。</span>
-            </motion.div>
-          </motion.div>
-
-          {/* Bottom Mini Map */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[400px] h-10 bg-black/80 backdrop-blur-xl rounded-full border border-white/10 z-40 flex items-center px-1.5 shadow-lg">
-            <div className="w-full h-7 bg-white/5 rounded-full relative overflow-hidden">
-              <img src="https://picsum.photos/seed/panorama/400/24?grayscale" alt="缩略图" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" referrerPolicy="no-referrer" />
-              {/* Tracking Box */}
-              <motion.div 
-                animate={{ x: ["0%", "300%", "0%"] }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 bottom-0 left-0 w-1/4 border border-white/50 bg-white/10 rounded-full flex items-center justify-center"
-              >
-                <span className="text-[8px] text-white/80 font-mono tracking-widest uppercase">足迹矩阵</span>
-              </motion.div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </Slide>
