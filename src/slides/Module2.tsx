@@ -160,7 +160,12 @@ export function Slide6() {
             style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
           >
             <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')]" />
-            <h3 className="text-xl mb-8 border-l border-black/30 pl-3 tracking-widest">故宫博物院考证文献</h3>
+            <img 
+              src="/images/images/screen-shot/截屏2026-03-11 下午7.20.54.png" 
+              alt="故宫博物院考证文献" 
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-auto object-contain opacity-90"
+            />
+            <h3 className="text-xl mb-8 border-l border-black/30 pl-3 tracking-widest mt-40">故宫博物院考证文献</h3>
             <p className="text-base leading-loose tracking-[0.3em]">
               画中人物衣纹多用<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword1">兰叶描</span>与<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword2">蚂蝗描</span>，
               呈现出典型的<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword3">南宋院体</span>风格...
