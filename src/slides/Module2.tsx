@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Slide } from '../components/Slide';
 import { Zap } from 'lucide-react';
+import { useState } from 'react';
 
 export function Slide4() {
   return (
@@ -80,30 +81,30 @@ export function Slide5() {
   return (
     <Slide title="降维策略" subtitle="基于文本叙事驱动的分镜提取">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-sm mb-6 text-center leading-relaxed max-w-4xl mx-auto">
           面对算力与模型的双重限制，我们采取了“降维解耦”策略。放弃对全画卷的整体动态化，转而基于《诗经》文本的叙事逻辑，提取关键分镜。通过掩码技术分离动态主体与静态背景，大幅降低了生成任务的复杂度。
         </p>
         {/* Top 3 Columns */}
-        <div className="flex justify-between gap-6 mb-12">
+        <div className="flex justify-between gap-6 mb-6">
           {['叙事性 (如"七月流火，九月授衣")', '画面完整性 (保留环境背景)', '动静对比 (内禀动势与静止背景)'].map((text, i) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2 }}
-              className="flex-1 bg-white/5 border border-bronze/20 p-6 rounded-xl text-center relative overflow-hidden group"
+              className="flex-1 bg-white/5 border border-bronze/20 p-4 rounded-xl text-center relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-px bg-white/30" />
-              <span className="font-serif text-base text-white/80 tracking-wide">{text}</span>
+              <span className="font-serif text-sm text-white/80 tracking-wide">{text}</span>
             </motion.div>
           ))}
         </div>
 
         {/* Bottom Gallery */}
-        <div className="flex-1 relative">
-          <div className="grid grid-cols-4 gap-6 h-full pb-8">
-            {[...Array(8)].map((_, i) => (
+        <div className="flex-1 relative min-h-0">
+          <div className="grid grid-cols-4 grid-rows-2 gap-3 h-full pb-2">
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((imgIndex, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -111,7 +112,7 @@ export function Slide5() {
                 transition={{ delay: 0.3 + (i * 0.1) }}
                 className={`relative rounded-xl overflow-hidden border ${i === 2 ? 'border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)] z-10 scale-105' : 'border-white/10'}`}
               >
-                <img src={`/input_images/image_00${i + 1}.png`} alt={`Scene ${i}`} className="w-full h-full object-cover" />
+                <img src={`/input_images/image_00${imgIndex + 1}.png`} alt={`Scene ${imgIndex}`} className="w-full h-full object-cover" />
                 {i === 2 && (
                   <>
                     <motion.div 
@@ -151,25 +152,57 @@ export function Slide6() {
         </p>
         <div className="flex h-full w-full items-center gap-12">
         {/* Left: Ancient Text */}
-        <div className="w-2/5 h-[400px] relative">
+        <div className="w-2/5 h-[400px] relative group">
           <motion.div 
             initial={{ opacity: 0, rotateY: -15 }}
             whileInView={{ opacity: 1, rotateY: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full h-full bg-bg-paper rounded-lg shadow-xl p-10 relative overflow-hidden text-text-ink font-serif"
-            style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+            className="w-full h-full bg-[#F0EFE2] rounded-lg shadow-2xl relative overflow-hidden text-black/80 font-serif flex border border-[#D8D8C0]"
           >
-            <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')]" />
-            <img 
-              src="/images/images/screen-shot/截屏2026-03-11 下午7.20.54.png" 
-              alt="故宫博物院考证文献" 
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-auto object-contain opacity-90"
-            />
-            <h3 className="text-xl mb-8 border-l border-black/30 pl-3 tracking-widest mt-40">故宫博物院考证文献</h3>
-            <p className="text-base leading-loose tracking-[0.3em]">
-              画中人物衣纹多用<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword1">兰叶描</span>与<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword2">蚂蝗描</span>，
-              呈现出典型的<span className="text-cinnabar font-bold border-b border-cinnabar/40 pb-1 relative z-10" id="keyword3">南宋院体</span>风格...
-            </p>
+            {/* Texture Overlay */}
+            <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')] mix-blend-multiply pointer-events-none" />
+            
+            {/* Image Section - Left */}
+            <div className="w-[62%] h-full p-6 pl-10 flex items-center justify-center relative z-10">
+              <div className="relative group-hover:scale-[1.02] transition-transform duration-700 ease-out">
+                <img 
+                  src="/images/images/screen-shot/截屏2026-03-11 下午7.20.54.png" 
+                  alt="故宫博物院考证文献" 
+                  className="w-full h-auto max-h-[300px] object-contain shadow-md border-2 border-white/40 rounded-sm"
+                />
+                {/* Image Caption */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[8px] text-black/30 font-mono tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  FIG.01 院体画风考证
+                </div>
+              </div>
+            </div>
+
+            {/* Text Section - Right */}
+            <div className="w-[38%] h-full py-12 pr-8 pl-4 relative z-10 flex flex-col items-center" style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}>
+              {/* Decorative Line */}
+              <div className="absolute top-12 bottom-12 left-0 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent" />
+              
+              <h3 className="text-base font-bold text-black/90 tracking-[0.3em] leading-relaxed border-l-2 border-cinnabar/60 pl-4 mb-4 mt-2">
+                故宫博物院考证文献
+              </h3>
+              
+              <p className="text-[10px] leading-[2.4em] tracking-[0.15em] text-black/70 text-justify h-full pt-2">
+                画中人物衣纹多用
+                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">兰叶描</span>
+                与
+                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">蚂蝗描</span>，
+                呈现出典型的
+                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">南宋院体</span>
+                风格。笔法洗练，设色淡雅。
+              </p>
+              
+              {/* Seal */}
+              <div className="mt-auto pt-6 opacity-40 hover:opacity-80 transition-opacity duration-500">
+                 <div className="w-6 h-6 border border-cinnabar rounded-sm flex items-center justify-center bg-cinnabar/5">
+                    <span className="text-[6px] text-cinnabar font-bold">考据</span>
+                 </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
@@ -203,13 +236,13 @@ export function Slide6() {
               <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
               <span className="ml-4 text-[10px] text-white/40 font-mono tracking-widest uppercase">prompt_config.json</span>
             </div>
-            <div className="p-8 font-mono text-xs leading-loose text-white/60">
+            <div className="p-6 font-mono text-xs leading-relaxed text-white/60 overflow-y-auto">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                <span className="text-white/80">"prompt"</span>: <span className="text-white/50">"南宋马和之《豳风图》风格, 蚂蝗描衣纹, 院体画风, 静态散点透视, 农夫挥锄耕作, 动作连贯自然, 画面无明显运镜..."</span>,
+                <span className="text-jade">"prompt"</span>: <span className="text-white/50">"Animation of a scene from 'Binfeng Tu' by Ma Hezhi. Traditional Chinese ink and color painting on silk. A procession of ancient figures wearing robes walks across a landscape. They hold long, thin poles with small red accents at the tips. A horse is part of the group. The background features stylized rocks and sparse trees drawn with 'orchid leaf' brushstrokes. Soft, serene movement, historical atmosphere."</span>,
               </motion.div>
               <br/>
               <motion.div
@@ -217,7 +250,7 @@ export function Slide6() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                <span className="text-white/80">"negative_prompt"</span>: <span className="text-white/40">"镜头移动, 背景变形, 抖动, 现代元素, 模糊, 颜色失真, 现代服饰, 3D渲染..."</span>
+                <span className="text-cinnabar">"negative_prompt"</span>: <span className="text-white/40">"blurry, low quality, distorted, modern style, photograph, realistic, 3D render, ugly, deformed, noisy"</span>
               </motion.div>
             </div>
           </motion.div>
@@ -229,6 +262,73 @@ export function Slide6() {
 }
 
 export function Slide7() {
+  const [hoveredVersion, setHoveredVersion] = useState<string | null>(null);
+
+  const versions = [
+    {
+      id: "V1",
+      label: "V1",
+      cx: "2",
+      cy: "60",
+      color: "var(--color-cinnabar)",
+      title: "基础生成",
+      desc: "初步跑通生成流程",
+      params: { "Frames": "21", "FPS": "16", "Denoise": "Default" }
+    },
+    {
+      id: "V12",
+      label: "V12",
+      cx: "15",
+      cy: "50",
+      color: "var(--color-bronze)",
+      title: "提示词/时长优化",
+      desc: "引入负向提示词，增加生成时长",
+      params: { "Frames": "33", "FPS": "11", "Denoise": "0.75" }
+    },
+    {
+      id: "V35",
+      label: "V35",
+      cx: "35",
+      cy: "45",
+      color: "var(--color-bronze)",
+      title: "过渡平滑",
+      desc: "首帧固定 + 线性混合 (Linear Blending)",
+      params: { "Blending Frames": "7", "Motion": "Continuous Right" }
+    },
+    {
+      id: "V52",
+      label: "V52",
+      cx: "55",
+      cy: "20",
+      color: "var(--color-jade)",
+      title: "背景冻结 (重大突破)",
+      desc: "光流法检测 + 泊松融合",
+      params: { "Motion Threshold": "0.75", "Technique": "Optical Flow" }
+    },
+    {
+      id: "V68",
+      label: "V68",
+      cx: "75",
+      cy: "25",
+      color: "var(--color-jade)",
+      title: "原图保真",
+      desc: "降低重绘幅度以保留笔触细节",
+      params: { "Denoising Strength": "0.5", "Fidelity": "High" }
+    },
+    {
+      id: "V74",
+      label: "V74",
+      cx: "98",
+      cy: "8",
+      color: "var(--color-jade)",
+      title: "高画质稳态",
+      desc: "增加推理步数，极致画质",
+      params: { "Sampling Steps": "80", "CFG Scale": "7.5" }
+    }
+  ];
+
+  const activeData = hoveredVersion ? versions.find(v => v.id === hoveredVersion) : versions[versions.length - 1];
+
   return (
     <Slide title="双阶段演进" subtitle="开源大模型推理与稳态超参数">
       <div className="flex flex-col h-full w-full">
@@ -237,12 +337,12 @@ export function Slide7() {
         </p>
         <div className="flex h-full w-full gap-12 items-center">
         {/* Left: Architecture Diagram */}
-        <div className="w-1/2 h-full flex flex-col justify-center">
+        <div className="w-[35%] h-full flex flex-col justify-center">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative w-full h-[400px] bg-white/5 border border-white/10 rounded-2xl p-10 flex flex-col items-center justify-between"
+            className="relative w-full h-[400px] bg-white/5 border border-white/10 rounded-2xl p-10 flex flex-col items-center justify-center"
           >
             <div className="w-48 h-24 bg-black/40 border border-white/20 rounded-xl flex items-center justify-center relative backdrop-blur-sm">
               <span className="font-mono text-sm text-white/80 tracking-widest text-center uppercase">Wan 2.1<br/>I2V 14B</span>
@@ -262,36 +362,139 @@ export function Slide7() {
         </div>
 
         {/* Right: Chart & Data */}
-        <div className="w-1/2 h-full flex flex-col justify-center relative">
-          <h3 className="text-sm font-serif text-white/60 mb-8 text-center tracking-widest uppercase">画面稳定度得分演进</h3>
+        <div className="w-[65%] h-full flex flex-col justify-center relative">
+          <h3 className="text-sm font-serif text-white/60 mb-8 text-center tracking-widest uppercase">参数迭代演进 (70+ 实验)</h3>
           <div className="relative w-full h-[300px] border-l border-b border-white/10 p-4">
-            {/* Chart Line */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            {/* Y-axis labels */}
+            <div className="absolute left-0 top-0 bottom-8 w-8 flex flex-col justify-between text-[8px] text-white/30 font-mono">
+              <span>100</span>
+              <span>75</span>
+              <span>50</span>
+              <span>25</span>
+              <span>0</span>
+            </div>
+            
+            {/* Chart Line with version markers */}
+            <svg className="absolute inset-0 w-full h-full pl-8" viewBox="0 0 100 100" preserveAspectRatio="none">
+              {/* Grid lines */}
+              <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
+              <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
+              <line x1="0" y1="75" x2="100" y2="75" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
+              
+              {/* Intermediate experiment points (representing 70+ versions) */}
+              {[...Array(40)].map((_, i) => {
+                 // Generate points roughly along the curve to simulate dense experiments
+                 const x = 2 + (i * 2.4); // Spread across 0-98
+                 // Approximate the curve y-values with some randomness
+                 let y = 60;
+                 if (x < 15) y = 60 - (x-2)*(10/13);
+                 else if (x < 35) y = 50 - (x-15)*(5/20);
+                 else if (x < 55) y = 45 - (x-35)*(25/20);
+                 else if (x < 75) y = 20 + (x-55)*(5/20);
+                 else y = 25 - (x-75)*(17/23);
+                 
+                 // Add jitter
+                 y += (Math.random() - 0.5) * 4;
+                 
+                 return (
+                   <motion.circle 
+                     key={`exp-${i}`}
+                     initial={{ opacity: 0 }}
+                     whileInView={{ opacity: 0.3 }}
+                     transition={{ delay: 0.5 + Math.random(), duration: 1 }}
+                     cx={x} 
+                     cy={y} 
+                     r="0.5" 
+                     fill="white" 
+                   />
+                 );
+              })}
+
+              {/* Main curve: V1 -> V2 -> V10 -> V18 -> V20 -> V21 */}
               <motion.path 
-                d="M 0 80 Q 10 20, 20 70 T 40 40 T 60 60 T 80 20 L 100 20" 
+                d="M 2 60 L 15 50 L 35 45 L 55 20 L 75 25 L 98 8" 
                 fill="none" 
                 stroke="var(--color-bronze)" 
-                strokeWidth="1"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
               />
-            </svg>
-            <div className="absolute bottom-[-24px] left-0 text-[10px] text-white/30 font-mono tracking-widest">Exp 1</div>
-            <div className="absolute bottom-[-24px] right-0 text-[10px] text-white/60 font-mono tracking-widest">Exp 74 (稳态)</div>
+              
+              {/* Version markers */}
+              {versions.map((v) => (
+                <g key={v.id} 
+                   onMouseEnter={() => setHoveredVersion(v.id)}
+                   onMouseLeave={() => setHoveredVersion(null)}
+                   className="cursor-pointer group"
+                >
+                  <circle 
+                     cx={v.cx} 
+                     cy={v.cy} 
+                     r={hoveredVersion === v.id ? "4" : (v.id === "V52" || v.id === "V74" ? "2.5" : "2")} 
+                     fill={v.color} 
+                     className="transition-all duration-300"
+                     stroke={hoveredVersion === v.id ? "white" : "none"}
+                     strokeWidth="1"
+                   />
+                   {/* Invisible hit area for easier hovering */}
+                   <circle cx={v.cx} cy={v.cy} r="8" fill="transparent" />
+                   
+                   {/* Pulse effect for key milestones */}
+                   {(v.id === "V52" || v.id === "V74") && !hoveredVersion && (
+                     <circle cx={v.cx} cy={v.cy} r="2.5" fill={v.color} stroke={v.color} strokeWidth="0.5" className="opacity-50">
+                       <animate attributeName="r" values="2.5;4.5;2.5" dur="2s" repeatCount="indefinite" />
+                       <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+                     </circle>
+                   )}
+                 </g>
+               ))}
+             </svg>
+             
+             {/* Version labels on X-axis */}
+             <div className="absolute bottom-[-8px] left-[2%] -translate-x-1/2 text-[9px] text-cinnabar font-mono">V1</div>
+             <div className="absolute bottom-[-8px] left-[15%] -translate-x-1/2 text-[9px] text-white/50 font-mono">V12</div>
+             <div className="absolute bottom-[-8px] left-[35%] -translate-x-1/2 text-[9px] text-white/50 font-mono">V35</div>
+             <div className="absolute bottom-[-8px] left-[55%] -translate-x-1/2 text-[9px] text-jade font-mono font-bold">V52</div>
+             <div className="absolute bottom-[-8px] left-[75%] -translate-x-1/2 text-[9px] text-white/50 font-mono">V68</div>
+             <div className="absolute bottom-[-8px] left-[98%] -translate-x-1/2 text-[9px] text-jade font-mono font-bold">V74</div>
             
-            {/* Optimal Params Panel */}
+            {/* Key milestone annotations (fade out on hover to avoid clutter) */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5 }}
-              className="absolute top-4 right-4 bg-black/60 backdrop-blur-md border border-jade/30 p-5 rounded-xl"
+              animate={{ opacity: hoveredVersion ? 0.2 : 1 }}
+              className="absolute inset-0 pointer-events-none"
             >
-              <h4 className="text-white/80 font-serif text-xs border-b border-white/10 pb-3 mb-3 tracking-widest">锁定超参数组合</h4>
-              <ul className="text-[10px] font-mono text-white/50 space-y-3 tracking-wider">
-                <li className="flex justify-between gap-4"><span>Sampling Steps:</span> <span className="text-white">50-80</span></li>
-                <li className="flex justify-between gap-4"><span>CFG Scale:</span> <span className="text-white">6.5-7.5</span></li>
-                <li className="flex justify-between gap-4"><span>Denoising Strength:</span> <span className="text-white">0.5-0.75</span></li>
+              <div className="absolute top-[38%] left-[12%] text-[8px] text-white/40 font-mono">提示词增强</div>
+              <div className="absolute top-[52%] left-[30%] text-[8px] text-white/40 font-mono">线性混合</div>
+              <div className="absolute top-[8%] left-[52%] text-[8px] text-jade font-mono bg-jade/10 px-1.5 py-0.5 rounded">光流法+泊松融合</div>
+              <div className="absolute top-[15%] left-[70%] text-[8px] text-white/40 font-mono">Denoise: 0.5</div>
+              <div className="absolute top-[2%] left-[88%] text-[8px] text-jade font-mono">Steps: 80</div>
+            </motion.div>
+            
+            {/* Dynamic Info Panel */}
+            <motion.div 
+              key={activeData?.id || 'default'}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className={`absolute top-4 right-4 backdrop-blur-md border p-5 rounded-xl w-48 shadow-2xl ${
+                hoveredVersion ? 'bg-black/80 border-white/30 z-20' : 'bg-black/60 border-jade/30'
+              }`}
+            >
+              <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+                <span className="text-white/90 font-serif text-xs tracking-widest font-bold">{activeData?.id} {activeData?.title}</span>
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: activeData?.color }} />
+              </div>
+              <p className="text-[10px] text-white/60 mb-3 leading-relaxed">{activeData?.desc}</p>
+              <ul className="text-[10px] font-mono text-white/50 space-y-2 tracking-wider">
+                {activeData?.params && Object.entries(activeData.params).map(([key, value]) => (
+                  <li key={key} className="flex justify-between gap-2">
+                    <span>{key}:</span> 
+                    <span className="text-white font-bold">{value}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>
@@ -303,6 +506,41 @@ export function Slide7() {
 }
 
 export function Slide8() {
+  const steps = [
+    {
+      id: "01",
+      title: "光流检测 (Farnebäck)",
+      desc: "使用 Farnebäck 稠密光流算法，计算像素级位移向量场，量化画面运动趋势。",
+      img: "/images/images/screen-shot/截屏2026-03-13 下午12.05.31.png",
+      color: "text-bronze",
+      bg: "bg-bronze/20"
+    },
+    {
+      id: "02",
+      title: "运动区域掩码 (形态学)",
+      desc: "基于光流幅值生成动态掩码，利用膨胀与高斯模糊处理，精确分割运动主体与静态背景。",
+      img: "/images/images/screen-shot/截屏2026-03-13 下午12.06.34.png",
+      color: "text-bronze",
+      bg: "bg-bronze/20"
+    },
+    {
+      id: "03",
+      title: "金字塔背景融合 (5层)",
+      desc: "采用拉普拉斯金字塔融合技术 (Poisson Blending)，实现生成背景与原始画卷的无缝拼接。",
+      img: "/images/images/screen-shot/截屏2026-03-13 下午12.09.50.png",
+      color: "text-bronze",
+      bg: "bg-bronze/20"
+    },
+    {
+      id: "04",
+      title: "时序平滑 (3-5帧滑动窗口)",
+      desc: "应用滑动窗口均值滤波策略（3-5帧），消除帧间闪烁，确保画面动态的连贯与稳定性。",
+      img: "/images/images/screen-shot/截屏2026-03-13 下午12.14.29.png",
+      color: "text-black", // Keep step 4 style consistent with previous design if intended, or normalize. I'll use bronze for consistency or check previous design. Previous step 4 had bronze text on black bg? No, step 4 had bronze text on bronze bg. Wait, Step 4 had `bg-bronze text-black`. I'll stick to a consistent style or keep the original variation if significant. Let's make them consistent for now, but maybe highlight the last one? The previous code had Step 4 with `bg-bronze text-black` for the label. Steps 1-3 had `bg-bronze/20 text-bronze`. I'll replicate that pattern.
+      bg: "bg-bronze" 
+    }
+  ];
+
   return (
     <Slide title="四步稳定化后处理管线" subtitle="4-Step Post-Processing Pipeline">
       <div className="flex flex-col h-full w-full justify-center">
@@ -310,81 +548,36 @@ export function Slide8() {
           针对 AI 生成视频中常见的背景闪烁、边缘抖动和时序不连贯等痛点，我们设计了一套基于传统计算机视觉（CV）的四步后处理管线。通过光流检测与形态学掩码，将动态人物与静态背景重新融合，显著提升了最终视觉呈现的可用性与美感。
         </p>
         <div className="grid grid-cols-4 gap-6 h-[300px]">
-          {/* Step 1 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 left-0 bg-bronze/20 text-bronze text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-br-xl z-10">STEP 01</div>
-            <h4 className="font-serif text-sm text-white/90 mb-4 mt-6 tracking-wide">光流检测 (Farnebäck)</h4>
-            <div className="flex-1 w-full bg-black/50 rounded-lg border border-white/5 relative overflow-hidden flex items-center justify-center mix-blend-luminosity">
-              <img src="https://picsum.photos/seed/step1/200/200?grayscale" alt="光流" className="w-full h-full object-cover opacity-40" referrerPolicy="no-referrer" />
-              {/* Simulated Optical Flow Arrows */}
-              <svg className="absolute inset-0 w-full h-full opacity-50">
-                <defs>
-                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#fff" />
-                  </marker>
-                </defs>
-                <line x1="20%" y1="50%" x2="40%" y2="40%" stroke="#fff" strokeWidth="1" markerEnd="url(#arrow)" />
-                <line x1="30%" y1="60%" x2="50%" y2="50%" stroke="#fff" strokeWidth="1" markerEnd="url(#arrow)" />
-                <line x1="40%" y1="70%" x2="60%" y2="60%" stroke="#fff" strokeWidth="1" markerEnd="url(#arrow)" />
-              </svg>
-            </div>
-          </motion.div>
-
-          {/* Step 2 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 left-0 bg-bronze/20 text-bronze text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-br-xl z-10">STEP 02</div>
-            <h4 className="font-serif text-sm text-white/90 mb-4 mt-6 tracking-wide">运动区域掩码 (形态学)</h4>
-            <div className="flex-1 w-full bg-black/80 rounded-lg border border-white/5 relative overflow-hidden flex items-center justify-center">
-              <div className="w-16 h-24 bg-white/80 rounded-full filter blur-xl opacity-60" />
-            </div>
-          </motion.div>
-
-          {/* Step 3 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center relative overflow-hidden"
-          >
-            <div className="absolute top-0 left-0 bg-bronze/20 text-bronze text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-br-xl z-10">STEP 03</div>
-            <h4 className="font-serif text-sm text-white/90 mb-4 mt-6 tracking-wide">金字塔背景融合 (5层)</h4>
-            <div className="flex-1 w-full bg-black/50 rounded-lg border border-white/5 relative overflow-hidden flex flex-col items-center justify-center gap-1.5">
-              <div className="w-24 h-3 border border-white/20 bg-white/5 rounded-sm" />
-              <div className="w-20 h-3 border border-white/30 bg-white/10 rounded-sm" />
-              <div className="w-16 h-3 border border-white/40 bg-white/15 rounded-sm" />
-              <div className="w-12 h-3 border border-white/50 bg-white/20 rounded-sm" />
-              <div className="w-8 h-3 border border-white/60 bg-white/25 rounded-sm" />
-            </div>
-          </motion.div>
-
-          {/* Step 4 */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white/10 border border-white/20 rounded-2xl p-5 flex flex-col items-center relative overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.05)]"
-          >
-            <div className="absolute top-0 left-0 bg-bronze text-black text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-br-xl z-10">STEP 04</div>
-            <h4 className="font-serif text-sm text-white mb-4 mt-6 tracking-wide">时序平滑 (3-5帧滑动窗口)</h4>
-            <div className="flex-1 w-full bg-black/50 rounded-lg border border-white/20 relative overflow-hidden flex items-center justify-center mix-blend-luminosity">
-               <img src="https://picsum.photos/seed/step4/200/200?grayscale" alt="最终" className="w-full h-full object-cover opacity-80" referrerPolicy="no-referrer" />
-               <motion.div 
-                  animate={{ opacity: [0, 0.5, 0] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-white/10"
-               />
-            </div>
-          </motion.div>
+          {steps.map((step, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * (i + 1) }}
+              className={`bg-white/5 border ${i === 3 ? 'border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-white/10'} rounded-2xl p-5 flex flex-col items-center relative overflow-hidden group`}
+            >
+              <div className={`absolute top-0 left-0 ${step.id === '04' ? 'bg-bronze text-black' : 'bg-bronze/20 text-bronze'} text-[10px] font-mono tracking-widest px-3 py-1.5 rounded-br-xl z-10 transition-colors duration-300`}>
+                STEP {step.id}
+              </div>
+              
+              <h4 className="font-serif text-sm text-white/90 mb-4 mt-6 tracking-wide relative z-10">{step.title}</h4>
+              
+              <div className="flex-1 w-full bg-black/50 rounded-lg border border-white/5 relative overflow-hidden flex items-center justify-center">
+                <img 
+                  src={step.img} 
+                  alt={step.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-40" 
+                />
+                
+                {/* Hover Overlay with Description */}
+                <div className="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-sm">
+                  <p className="text-white/90 text-xs font-sans leading-relaxed text-justify shadow-black drop-shadow-md">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </Slide>

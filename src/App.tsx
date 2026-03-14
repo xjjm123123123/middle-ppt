@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import LoadingScreen from './components/LoadingScreen';
@@ -42,19 +42,18 @@ export default function App() {
   }, [nextSlide, prevSlide]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleLoadingComplete = () => {
       setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
+    };
+    window.addEventListener('loadingComplete', handleLoadingComplete);
+    return () => window.removeEventListener('loadingComplete', handleLoadingComplete);
   }, []);
 
   const CurrentSlideComponent = slides[currentSlide];
 
   return (
     <>
-      <AnimatePresence>
-        {isLoading && <LoadingScreen key="loading" />}
-      </AnimatePresence>
+      {isLoading && <LoadingScreen />}
       <div 
       className="w-screen h-screen bg-[var(--color-bg-dark)] text-[var(--color-text-main)] overflow-hidden relative font-sans"
       onClick={(e) => {

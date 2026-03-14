@@ -38,6 +38,13 @@ body {
   background: rgba(255, 255, 255, 0.4);
 }
 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 /* Texture overlay for subtle noise */
 .texture-overlay {
   position: absolute;
