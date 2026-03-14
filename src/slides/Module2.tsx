@@ -109,7 +109,7 @@ export function Slide5() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 + (i * 0.1) }}
-                className={`relative rounded-xl overflow-hidden border ${i === 2 ? 'border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)] z-10 scale-105' : 'border-white/5 opacity-40 mix-blend-luminosity'}`}
+                className={`relative rounded-xl overflow-hidden border ${i === 2 ? 'border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)] z-10 scale-105' : 'border-white/10'}`}
               >
                 <img src={`/input_images/image_00${i + 1}.png`} alt={`Scene ${i}`} className="w-full h-full object-cover" />
                 {i === 2 && (
