@@ -102,7 +102,7 @@ export function Slide5() {
 
         {/* Bottom Gallery */}
         <div className="flex-1 relative">
-          <div className="grid grid-cols-4 gap-6 h-full pb-8">
+          <div className="grid grid-cols-4 gap-6 min-h-[300px] pb-8">
             {[...Array(8)].map((_, i) => (
               <motion.div 
                 key={i}
