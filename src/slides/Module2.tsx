@@ -184,37 +184,19 @@ export function Slide6() {
           </svg>
         </div>
 
-        {/* Right: Code Editor */}
+        {/* Right: Reference Image */}
         <div className="w-2/5 h-[400px]">
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-full h-full bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden flex flex-col shadow-2xl"
+            className="w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10"
           >
-            <div className="h-10 bg-white/5 flex items-center px-4 gap-2 border-b border-white/5">
-              <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-              <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-              <span className="ml-4 text-[10px] text-white/40 font-mono tracking-widest uppercase">prompt_config.json</span>
-            </div>
-            <div className="p-8 font-mono text-xs leading-loose text-white/60">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-              >
-                <span className="text-white/80">"prompt"</span>: <span className="text-white/50">"南宋马和之《豳风图》风格, 蚂蝗描衣纹, 院体画风, 静态散点透视, 农夫挥锄耕作, 动作连贯自然, 画面无明显运镜..."</span>,
-              </motion.div>
-              <br/>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <span className="text-white/80">"negative_prompt"</span>: <span className="text-white/40">"镜头移动, 背景变形, 抖动, 现代元素, 模糊, 颜色失真, 现代服饰, 3D渲染..."</span>
-              </motion.div>
-            </div>
+            <img 
+              src="/images/images/screen-shot/截屏2026-03-11 下午7.20.54.png" 
+              alt="故宫博物院考证文献" 
+              className="w-full h-full object-contain bg-white/5"
+            />
           </motion.div>
         </div>
       </div>
