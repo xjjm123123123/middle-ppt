@@ -58,7 +58,7 @@ export default function App() {
       
       {/* Main Content Area */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full max-w-7xl h-full max-h-[900px] aspect-video relative pointer-events-auto px-8 md:px-16">
+        <div className="w-full h-full relative pointer-events-auto px-12 md:px-24">
           <AnimatePresence mode="wait">
             <CurrentSlideComponent key={currentSlide} />
           </AnimatePresence>
@@ -99,11 +99,8 @@ export default function App() {
       </div>
 
       {/* Minimalist Logo Placeholder */}
-      <div className="absolute top-8 right-8 z-50 opacity-40 flex items-center gap-3 pointer-events-none">
-        <div className="w-6 h-6 rounded-full border border-cinnabar/50 flex items-center justify-center">
-          <span className="text-[8px] text-cinnabar font-serif">HIT</span>
-        </div>
-        <span className="font-serif text-xs tracking-[0.2em] text-white/70 uppercase">Harbin Institute of Technology</span>
+      <div className="absolute top-6 right-6 z-50 pointer-events-none">
+        <img src="/logo.png" alt="HIT Logo" className="w-24 h-auto object-contain mix-blend-screen opacity-90" />
       </div>
     </div>
   );

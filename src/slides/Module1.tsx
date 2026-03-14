@@ -4,7 +4,7 @@ import { MapPin } from 'lucide-react';
 
 export function Slide1() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden bg-[var(--color-bg-dark)]">
+    <div className="w-full h-full flex flex-col items-center justify-center relative bg-[var(--color-bg-dark)]">
       {/* Subtle Glow Background */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -72,33 +72,33 @@ export function Slide2() {
 
         {/* Right 60% */}
         <div className="w-full md:w-3/5 h-full flex items-center justify-center relative">
-          <div className="relative w-[400px] h-[400px]">
+          <div className="relative w-full max-w-[600px] aspect-square">
             {/* Venn Diagram Circles */}
             <motion.div 
               initial={{ x: -50, y: -50, opacity: 0 }}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="absolute top-0 left-1/4 w-56 h-56 rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute top-0 left-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
             >
-              <span className="absolute top-8 text-white/80 font-sans tracking-widest text-sm text-center">AIGC<br/><span className="text-[10px] opacity-50 uppercase">生成式人工智能</span></span>
+              <span className="absolute top-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">AIGC<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">生成式人工智能</span></span>
             </motion.div>
             
             <motion.div 
               initial={{ x: 50, y: -50, opacity: 0 }}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="absolute top-0 right-1/4 w-56 h-56 rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute top-0 right-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
             >
-              <span className="absolute top-8 text-white/80 font-sans tracking-widest text-sm text-center">HCI<br/><span className="text-[10px] opacity-50 uppercase">人机交互</span></span>
+              <span className="absolute top-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">HCI<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">人机交互</span></span>
             </motion.div>
 
             <motion.div 
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 w-56 h-56 rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
             >
-              <span className="absolute bottom-8 text-white/80 font-sans tracking-widest text-sm text-center">Digital Humanities<br/><span className="text-[10px] opacity-50 uppercase">数字人文</span></span>
+              <span className="absolute bottom-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">Digital Humanities<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">数字人文</span></span>
             </motion.div>
 
             {/* Center Intersection */}
@@ -106,9 +106,9 @@ export function Slide2() {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 1.2 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-cinnabar/20 flex items-center justify-center z-10 border border-cinnabar/50 backdrop-blur-xl"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[24%] h-[24%] rounded-full bg-cinnabar/20 flex items-center justify-center z-10 border border-cinnabar/50 backdrop-blur-xl"
             >
-              <span className="text-white font-serif text-xs text-center leading-relaxed tracking-widest">古典<br/>数字人文</span>
+              <span className="text-white font-serif text-xs md:text-sm text-center leading-relaxed tracking-widest">古典<br/>数字人文</span>
             </motion.div>
           </div>
         </div>
