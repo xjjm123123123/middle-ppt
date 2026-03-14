@@ -58,7 +58,7 @@ export default function App() {
       
       {/* Main Content Area */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full h-full relative pointer-events-auto px-12 md:px-24">
+        <div className="w-full h-full relative pointer-events-auto px-12 md:px-20">
           <AnimatePresence mode="wait">
             <CurrentSlideComponent key={currentSlide} />
           </AnimatePresence>
@@ -100,7 +100,7 @@ export default function App() {
 
       {/* Minimalist Logo Placeholder */}
       <div className="absolute top-6 right-6 z-50 pointer-events-none">
-        <img src="/logo.png" alt="HIT Logo" className="w-24 h-auto object-contain mix-blend-screen opacity-90" />
+        <img src="/images/logo.png" alt="HIT Logo" className="w-24 h-auto object-contain mix-blend-screen opacity-90" />
       </div>
     </div>
   );

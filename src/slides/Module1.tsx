@@ -5,6 +5,14 @@ import { MapPin } from 'lucide-react';
 export function Slide1() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center relative bg-[var(--color-bg-dark)]">
+      {/* 豳风图背景 */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/images/images/binfengtu_small.jpg)' }}
+      />
+      {/* 黑色遮罩 */}
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      
       {/* Subtle Glow Background */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -62,23 +70,23 @@ export function Slide2() {
               传统书画的数字化展示多停留在静态高清扫描或简单的2D平移，缺乏对画中时空叙事与农耕文化的深度挖掘。本项目旨在利用 AIGC 技术，赋予古画动态生命力，打造沉浸式交互体验，探索数字人文视角下的文化遗产活化新路径。
             </p>
             <div className="mt-8 relative h-40 w-full rounded-lg overflow-hidden border border-white/10">
-              <img src="https://picsum.photos/seed/ancient/800/400?grayscale" alt="豳风图局部" className="w-full h-full object-cover opacity-60 mix-blend-luminosity" referrerPolicy="no-referrer" />
+              <img src="/images/images/tiles/tile_4.jpg" alt="豳风图局部" className="w-full h-full object-cover opacity-80 mix-blend-normal" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                <span className="text-xs font-serif text-white/60 tracking-widest">《豳风图》局部裁切</span>
+                <span className="text-xs font-serif text-white/80 tracking-widest">《豳风图》局部细节</span>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Right 60% */}
-        <div className="w-full md:w-3/5 h-full flex items-center justify-center relative">
-          <div className="relative w-full max-w-[600px] aspect-square">
+        <div className="w-full md:w-3/5 h-full flex items-center justify-center relative pt-4">
+          <div className="relative w-full max-w-[650px] aspect-[4/3]">
             {/* Venn Diagram Circles */}
             <motion.div 
               initial={{ x: -50, y: -50, opacity: 0 }}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="absolute top-0 left-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute top-[8%] left-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/15 flex items-center justify-center backdrop-blur-md"
             >
               <span className="absolute top-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">AIGC<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">生成式人工智能</span></span>
             </motion.div>
@@ -87,7 +95,7 @@ export function Slide2() {
               initial={{ x: 50, y: -50, opacity: 0 }}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="absolute top-0 right-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute top-[8%] right-[8%] w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/15 flex items-center justify-center backdrop-blur-md"
             >
               <span className="absolute top-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">HCI<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">人机交互</span></span>
             </motion.div>
@@ -96,7 +104,7 @@ export function Slide2() {
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/5 flex items-center justify-center backdrop-blur-md"
+              className="absolute bottom-[4%] left-1/2 -translate-x-1/2 w-[56%] h-[56%] rounded-full border border-bronze/30 bg-bronze/15 flex items-center justify-center backdrop-blur-md"
             >
               <span className="absolute bottom-[15%] text-white/80 font-sans tracking-widest text-sm md:text-base text-center">Digital Humanities<br/><span className="text-[10px] md:text-xs opacity-50 uppercase">数字人文</span></span>
             </motion.div>
