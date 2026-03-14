@@ -5,9 +5,9 @@ import { Zap } from 'lucide-react';
 export function Slide4() {
   return (
     <Slide title="数据重构与首轮算力受挫" subtitle="Data Reconstruction & Compute Bottleneck">
-      <div className="flex h-full w-full gap-8 items-center relative">
+      <div className="flex h-full w-full items-center relative">
         {/* Left Side: Data Prep */}
-        <div className="w-1/2 h-full flex flex-col justify-center">
+        <div className="w-1/2 h-full flex flex-col justify-center pr-12">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -40,7 +40,7 @@ export function Slide4() {
         </motion.div>
 
         {/* Right Side: Failure */}
-        <div className="w-1/2 h-full flex flex-col justify-center pl-8">
+        <div className="w-1/2 h-full flex flex-col justify-center pl-12">
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,10 +52,15 @@ export function Slide4() {
               由于古画画风独特且样本量有限，直接使用开源视频生成模型（如 AnimateDiff）进行端到端微调时，极易出现过拟合、画面崩坏，且在常规算力（如 RTX 4090）下频繁遭遇显存溢出（OOM）瓶颈。
             </p>
             <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10 bg-black flex items-center justify-center">
-              {/* Simulated Distorted Image */}
-              <div className="absolute inset-0 opacity-40 bg-[url('https://picsum.photos/seed/distorted/600/400')] bg-cover filter blur-sm contrast-150 grayscale mix-blend-luminosity" />
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-30 mix-blend-overlay" />
-              
+              {/* Demo Video */}
+              <video 
+                src="/video/微信视频2026-03-14_095721_877.mp4" 
+                className="w-full h-full object-contain" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+              />
               <motion.div 
                 animate={{ opacity: [1, 0.7, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}

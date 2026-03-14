@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import LoadingScreen from './components/LoadingScreen';
 import { Slide1, Slide2, Slide3 } from './slides/Module1';
 import { Slide4, Slide5, Slide6, Slide7, Slide8 } from './slides/Module2';
 import { Slide9, Slide10, Slide11, Slide12 } from './slides/Module3';
@@ -17,6 +18,7 @@ const slides = [
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => Math.min(prev + 1, slides.length - 1));
@@ -39,10 +41,21 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const CurrentSlideComponent = slides[currentSlide];
 
   return (
-    <div 
+    <>
+      <AnimatePresence>
+        {isLoading && <LoadingScreen key="loading" />}
+      </AnimatePresence>
+      <div 
       className="w-screen h-screen bg-[var(--color-bg-dark)] text-[var(--color-text-main)] overflow-hidden relative font-sans"
       onClick={(e) => {
         const target = e.target as HTMLElement;
@@ -103,5 +116,6 @@ export default function App() {
         <img src="/images/logo.png" alt="HIT Logo" className="w-24 h-auto object-contain mix-blend-screen opacity-90" />
       </div>
     </div>
+    </>
   );
 }

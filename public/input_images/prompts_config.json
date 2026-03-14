@@ -1,0 +1,118 @@
+{
+  "images": [
+    {
+      "image_path": "image_001.png",
+      "prompt": "Animation of a scene from 'Binfeng Tu' by Ma Hezhi. Traditional Chinese ink and color painting on silk. A procession of ancient figures wearing robes walks across a landscape. They hold long, thin poles with small red accents at the tips. A horse is part of the group. The background features stylized rocks and sparse trees drawn with 'orchid leaf' brushstrokes. Soft, serene movement, historical atmosphere.",
+      "negative_prompt": "blurry, low quality, distorted, modern style, photograph, realistic, 3D render",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_002.png",
+      "prompt": "Traditional Chinese landscape painting, BinFengTu style, misty mountains, flowing water, ancient trees, elegant composition, ink and wash, artistic",
+      "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, modern art, western style",
+      "strength": 0.7,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_003.png",
+      "prompt": "BinFengTu ancient Chinese painting, peaceful countryside, traditional architecture, flowing river, detailed scenery, classic Chinese art style",
+      "negative_prompt": "photorealistic, digital art, anime, cartoon, low quality, artifacts",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_004.png",
+      "prompt": "Ancient Chinese ink painting, BinFengTu tradition, majestic mountains, winding paths, traditional aesthetics, fine brushwork, serene atmosphere",
+      "negative_prompt": "blurry, out of focus, low resolution, noise, grain, modern elements",
+      "strength": 0.7,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_005.png",
+      "prompt": "Traditional Chinese art, BinFengTu landscape, ancient temples, misty valleys, flowing streams, elegant ink wash style, cultural heritage",
+      "negative_prompt": "western painting style, oil painting, photograph, realistic, 3D, low quality",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_006.png",
+      "prompt": "BinFengTu traditional painting, serene mountainside, ancient pavilions, flowing clouds, traditional Chinese aesthetics, ink wash masterpiece",
+      "negative_prompt": "blurry, low quality, modern, photograph, realistic, 3D render, western style",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_007.png",
+      "prompt": "Ancient Chinese landscape, BinFengTu style, peaceful riverside, traditional boats, misty atmosphere, elegant brushwork, cultural heritage",
+      "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, modern art, western painting",
+      "strength": 0.7,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_008.png",
+      "prompt": "BinFengTu masterpiece, traditional Chinese painting, ancient mountains, flowing waterfalls, serene valleys, detailed ink wash, Song Dynasty style",
+      "negative_prompt": "photorealistic, digital art, anime, cartoon, low quality, artifacts, modern style",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_009.png",
+      "prompt": "Traditional Chinese ink painting, BinFengTu tradition, peaceful countryside, ancient trees, winding paths, elegant composition, serene atmosphere",
+      "negative_prompt": "blurry, out of focus, low resolution, noise, grain, modern elements, photograph",
+      "strength": 0.7,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_010.png",
+      "prompt": "BinFengTu ancient art, traditional Chinese landscape, misty mountains, ancient temples, flowing streams, elegant ink wash style, cultural masterpiece",
+      "negative_prompt": "western painting style, oil painting, photograph, realistic, 3D, low quality, modern",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_011.png",
+      "prompt": "Traditional Chinese painting, BinFengTu style, serene landscape, majestic mountains, flowing rivers, detailed brushwork, ancient aesthetics, ink wash masterpiece",
+      "negative_prompt": "blurry, low quality, distorted, modern style, photograph, realistic, 3D render, western art",
+      "strength": 0.75,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    },
+    {
+      "image_path": "image_012.png",
+      "prompt": "BinFengTu ancient Chinese art, peaceful mountainside, traditional architecture, flowing clouds, misty valleys, elegant ink wash, cultural heritage, masterpiece",
+      "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, modern art, western painting, photograph",
+      "strength": 0.7,
+      "num_frames": 16,
+      "steps": 25,
+      "guidance_scale": 7.5
+    }
+  ],
+  "default_settings": {
+    "strength": 0.75,
+    "num_frames": 16,
+    "steps": 25,
+    "guidance_scale": 7.5
+  }
+}
