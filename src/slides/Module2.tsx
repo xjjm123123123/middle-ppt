@@ -111,7 +111,7 @@ export function Slide5() {
                 transition={{ delay: 0.3 + (i * 0.1) }}
                 className={`relative rounded-xl overflow-hidden border ${i === 2 ? 'border-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)] z-10 scale-105' : 'border-white/5 opacity-40 mix-blend-luminosity'}`}
               >
-                <img src={`https://picsum.photos/seed/scene${i}/300/200?grayscale`} alt={`Scene ${i}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src={`/input_images/image_00${i + 1}.png`} alt={`Scene ${i}`} className="w-full h-full object-cover" />
                 {i === 2 && (
                   <>
                     <motion.div 
