@@ -272,111 +272,117 @@ export function Slide12() {
   return (
     <Slide title="沉浸式数字水墨视觉渲染算法" subtitle="Immersive Digital Ink Rendering">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-sm mb-6 text-center leading-relaxed max-w-4xl mx-auto">
           为了营造极致的东方美学沉浸感，系统的视觉呈现不仅停留在视频播放层面。我们通过 CSS mix-blend-mode 深度还原了宣纸的物理质感，并结合 WebGL 流体力学算法模拟了鼠标交互时的水墨晕染与波纹效果，让数字界面焕发古典生机。
         </p>
-        <div className="grid grid-cols-3 gap-8 h-full w-full">
-        {/* Column 1: Rice Paper Overlay */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
-        >
-          <h4 className="font-serif text-white/90 mb-6 tracking-wide">宣纸纹理 (mix-blend-mode: overlay)</h4>
-          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-white">
-            <img src="https://picsum.photos/seed/art/300/400?grayscale" alt="原图" className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity" referrerPolicy="no-referrer" />
+        <div className="grid grid-cols-3 gap-6 h-full w-full min-h-0">
+          {/* Column 1: Rice Paper Overlay */}
+          <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+            <div className="absolute inset-0 p-6 flex flex-col items-center transition-opacity duration-300 group-hover:opacity-0">
+              <h4 className="font-serif text-white/90 mb-4 tracking-wide text-center">宣纸纹理叠加<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase">mix-blend-mode: overlay</span></h4>
+              <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10">
+                <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/xuan.png" alt="宣纸纹理" className="w-full h-full object-cover object-left" />
+              </div>
+            </div>
             
-            {/* Toggle Overlay Animation */}
-            <motion.div 
-              animate={{ opacity: [0, 1, 1, 0, 0] }}
-              transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
-              className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')] mix-blend-multiply opacity-80"
-            />
-            
-            <div className="absolute bottom-4 left-0 right-0 text-center">
-              <motion.span 
-                animate={{ opacity: [1, 0, 0, 1, 1] }}
-                transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
-                className="bg-black/80 backdrop-blur-md border border-white/20 text-white/80 text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded"
-              >
-                Normal
-              </motion.span>
-              <motion.span 
-                animate={{ opacity: [0, 1, 1, 0, 0] }}
-                transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
-                className="bg-white/90 text-black text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded absolute left-1/2 -translate-x-1/2 shadow-lg"
-              >
-                mix-blend-multiply
-              </motion.span>
+            {/* Hover Content */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-xl p-6 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-y-auto custom-scrollbar z-20">
+               <h4 className="text-bronze font-serif text-sm mb-3 font-bold">01. 宣纸纹理叠加算法</h4>
+               <p className="text-[10px] text-white/70 leading-relaxed mb-4 text-justify">
+                 系统构建了一个全屏覆盖的容器，利用 <code className="text-jade">pointer-events: none</code> 属性确保其不干扰底层 UI 的鼠标交互，并应用 <code className="text-jade">mix-blend-mode: overlay</code> 混合模式。该模式通过算法将纹理层的亮度信息与页面底色进行像素级叠加运算，从而在不遮挡关键内容的前提下，成功模拟出宣纸特有的纤维质感与粗糙度。
+               </p>
+               <div className="bg-[#1e1e1e] rounded-lg p-3 border border-white/10 font-mono text-[9px] leading-4 text-gray-300 overflow-x-auto mb-4">
+<pre>{`/* 1. 宣纸纹理叠层：物理质感模拟 */
+.xuan-paper-overlay {
+  position: fixed; /* 覆盖全屏 */
+  pointer-events: none; /* 穿透交互 */
+  z-index: 999;
+  opacity: 0.12;
+  background-image: url('paper.png');
+  /* 核心算法：叠加混合模式 */
+  mix-blend-mode: overlay; 
+}`}</pre>
+               </div>
+               
+               {/* Full Image Preview on Hover */}
+               <div className="mt-auto w-full border border-white/20 rounded-lg overflow-hidden">
+                 <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/xuan.png" alt="宣纸纹理完整预览" className="w-full h-auto object-contain" />
+               </div>
             </div>
           </div>
-        </motion.div>
 
-        {/* Column 2: Ink Glow */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
-        >
-          <h4 className="font-serif text-white/90 mb-6 text-center tracking-wide">水墨发光与脉冲<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase mt-2 block">(drop-shadow / scale 0.8-2.0)</span></h4>
-          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black flex items-center justify-center">
-            <motion.div 
-              animate={{ 
-                filter: [
-                  "drop-shadow(0 0 0px rgba(255,255,255,0))",
-                  "drop-shadow(0 0 20px rgba(255,255,255,0.4))",
-                  "drop-shadow(0 0 40px rgba(255,255,255,0.2))",
-                  "drop-shadow(0 0 0px rgba(255,255,255,0))"
-                ],
-                scale: [1, 1.05, 1.1, 1]
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-24 h-24 rounded-full border border-white/30 flex items-center justify-center bg-white/5 backdrop-blur-sm"
-            >
-              <span className="font-serif text-white/90 text-3xl font-light">豳</span>
-            </motion.div>
-          </div>
-        </motion.div>
+          {/* Column 2: Ink Glow */}
+          <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+            <div className="absolute inset-0 p-6 flex flex-col items-center transition-opacity duration-300 group-hover:opacity-0">
+              <h4 className="font-serif text-white/90 mb-4 tracking-wide text-center">水墨发光<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase">filter: drop-shadow</span></h4>
+              <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black flex items-center justify-center">
+                 <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/shui.png" alt="水墨发光" className="w-full h-full object-cover object-left" />
+              </div>
+            </div>
 
-        {/* Column 3: WebGL Fluid */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
-        >
-          <h4 className="font-serif text-white/90 mb-6 text-center tracking-wide">流体力学仿真 (WebGL)<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase mt-2 block">mouseForce=20, viscous=65</span></h4>
-          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black">
-            <img src="https://picsum.photos/seed/water/300/400?grayscale" alt="水面" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" referrerPolicy="no-referrer" />
-            
-            {/* Simulated WebGL Ripple */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <motion.circle 
-                cx="50%" cy="50%" r="10" 
-                fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5"
-                animate={{ r: [10, 120], opacity: [0.8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-              />
-              <motion.circle 
-                cx="50%" cy="50%" r="10" 
-                fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"
-                animate={{ r: [10, 180], opacity: [0.5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.8, ease: "easeOut" }}
-              />
-              {/* Simulated Mouse Path */}
-              <motion.path 
-                d="M 20 80 Q 50 50, 80 20" 
-                fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="15" strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: [0, 1, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </svg>
+            {/* Hover Content */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-xl p-6 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-y-auto custom-scrollbar z-20">
+               <h4 className="text-bronze font-serif text-sm mb-3 font-bold">02. 水墨呼吸光效算法</h4>
+               <p className="text-[10px] text-white/70 leading-relaxed mb-4 text-justify">
+                 摒弃了常规的盒阴影，转而采用 <code className="text-jade">filter: drop-shadow</code> 滤镜技术。该滤镜能够精准识别 SVG 矢量图形或 PNG 透明图像的非矩形边缘，使古铜金（#C5A059）光晕紧贴 Logo 的水墨笔触轮廓生成。配合 CSS animation 定义的 3秒 ease-in-out 循环动画，呈现出如同呼吸般忽明忽暗的温润光效。
+               </p>
+               <div className="bg-[#1e1e1e] rounded-lg p-3 border border-white/10 font-mono text-[9px] leading-4 text-gray-300 overflow-x-auto mb-4">
+<pre>{`/* 2. 水墨发光：古铜金呼吸光效 */
+.ink-glow {
+  /* 贴合不规则边缘产生投影 */
+  filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.5));
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 15px ...); }
+  50% { filter: drop-shadow(0 0 25px ...); }
+}`}</pre>
+               </div>
+
+               {/* Full Image Preview on Hover */}
+               <div className="mt-auto w-full border border-white/20 rounded-lg overflow-hidden">
+                 <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/shui.png" alt="水墨发光完整预览" className="w-full h-auto object-contain" />
+               </div>
+            </div>
           </div>
-        </motion.div>
-      </div>
+
+          {/* Column 3: Ink Pulse */}
+          <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+             <div className="absolute inset-0 p-6 flex flex-col items-center transition-opacity duration-300 group-hover:opacity-0">
+              <h4 className="font-serif text-white/90 mb-4 tracking-wide text-center">水墨脉冲与仿真<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase">CSS Animation + WebGL</span></h4>
+              <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black">
+                <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/mai.png" alt="流体仿真" className="w-full h-full object-cover object-left" />
+              </div>
+            </div>
+
+            {/* Hover Content */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-xl p-6 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-y-auto custom-scrollbar z-20">
+               <h4 className="text-bronze font-serif text-sm mb-3 font-bold">03. 水墨脉冲扩散算法</h4>
+               <p className="text-[10px] text-white/70 leading-relaxed mb-4 text-justify">
+                 基于 CSS <code className="text-jade">@keyframes</code> 关键帧动画技术，定义了从圆心向外扩散的物理运动曲线。通过同步控制元素 <code className="text-jade">transform: scale</code> 从 0.8 至 2.0 的非线性放大，以及 opacity 由 0.3 至 0 的透明度衰减，精确拟合了墨滴在宣纸纤维间晕染、扩散直至消散的物理过程。
+               </p>
+               <div className="bg-[#1e1e1e] rounded-lg p-3 border border-white/10 font-mono text-[9px] leading-4 text-gray-300 overflow-x-auto mb-4">
+<pre>{`/* 3. 水墨脉冲：交互热点扩散动效 */
+@keyframes ink-pulse {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { opacity: 0.3; }
+  /* 扩散至2倍大小并消散 */
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.ink-pulse {
+  animation: ink-pulse 2s ease-out infinite;
+}`}</pre>
+               </div>
+
+               {/* Full Image Preview on Hover */}
+               <div className="mt-auto w-full border border-white/20 rounded-lg overflow-hidden">
+                 <img src="https://raw.githubusercontent.com/xjjm123123123/middle-ppt/main/public/images/images/screen-shot/mai.png" alt="水墨脉冲完整预览" className="w-full h-auto object-contain" />
+               </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Slide>
   );
