@@ -1,0 +1,359 @@
+import { motion } from 'motion/react';
+import { Slide } from '../components/Slide';
+import { AlertTriangle } from 'lucide-react';
+
+export function Slide9() {
+  return (
+    <Slide title="高内聚低耦合的三层技术架构" subtitle="Three-Tier Technical Architecture">
+      <div className="flex flex-col h-full w-full items-center justify-center relative">
+        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl z-40">
+          系统采用现代化的前后端分离与 BaaS（Backend as a Service）架构，确保了极高的高可用性与可扩展性。表现层负责复杂的 WebGL 渲染与交互响应；业务服务层处理大模型 API 调度与核心逻辑；数据访问层则依托 Supabase 保障多模态资产的稳定分发，并设计了本地 JSON 降级方案以应对断网环境。
+        </p>
+        <div className="relative w-[600px] h-[500px] flex flex-col items-center justify-between">
+          
+          {/* Top Layer: React 19 */}
+          <motion.div 
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full h-24 bg-white/5 border border-white/10 rounded-xl border-t-4 border-t-white/80 flex items-center justify-center relative z-30 shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
+          >
+            <span className="font-serif text-lg text-white/90 tracking-wide">表现层 (React 19 + TypeScript + Vite)</span>
+            <div className="absolute -bottom-16 left-1/2 w-px h-16 bg-gradient-to-b from-white/50 to-white/20 -translate-x-1/2" />
+          </motion.div>
+
+          {/* Middle Layer: Service */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-3/4 h-24 bg-white/5 border border-white/10 rounded-xl border-t-4 border-t-white/60 flex items-center justify-center relative z-20 shadow-[0_10px_30px_rgba(255,255,255,0.05)]"
+          >
+            <span className="font-serif text-lg text-white/80 tracking-wide">业务服务层 (DeepSeek API / 核心逻辑)</span>
+            
+            {/* Connection to DB */}
+            <motion.div 
+              animate={{ backgroundColor: ["rgba(255,255,255,0.5)", "rgba(255,255,255,0.1)"] }}
+              transition={{ duration: 0.5, delay: 2, fillMode: "forwards" }}
+              className="absolute -bottom-16 left-1/2 w-px h-16 -translate-x-1/2 z-10"
+            />
+            
+            {/* Fallback Connection */}
+            <motion.div 
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={{ opacity: [0, 0, 1], pathLength: [0, 0, 1] }}
+              transition={{ duration: 1, delay: 2.5 }}
+              className="absolute -bottom-16 right-1/4 w-px h-16 bg-white/40 border-l border-dashed border-white/40 z-10"
+            />
+          </motion.div>
+
+          {/* Bottom Layer: Data */}
+          <div className="w-full flex justify-between gap-8 z-10">
+            {/* Supabase DB */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex-1 h-24 bg-white/5 border border-white/10 rounded-xl border-t-4 border-t-white/40 flex items-center justify-center shadow-[0_10px_30px_rgba(255,255,255,0.05)] relative overflow-hidden"
+            >
+              <span className="font-serif text-base text-white/70 tracking-wide">数据访问层 (Supabase BaaS / PostgreSQL)</span>
+              <motion.div 
+                animate={{ opacity: [0, 1] }}
+                transition={{ duration: 0.5, delay: 2, fillMode: "forwards" }}
+                className="absolute inset-0 bg-black/80 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20"
+              >
+                <span className="text-white/50 font-mono text-xs tracking-widest uppercase">连接断开 (模拟)</span>
+              </motion.div>
+            </motion.div>
+
+            {/* Local Fallback */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex-1 h-24 bg-white/5 border border-white/10 rounded-xl border-t-4 border-t-white/80 flex items-center justify-center shadow-[0_10px_30px_rgba(255,255,255,0.05)] relative"
+            >
+              <span className="font-serif text-base text-white/90 tracking-wide">本地媒体池 (JSON)</span>
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0, 1] }}
+                transition={{ duration: 0.5, delay: 2.5 }}
+                className="absolute -top-6 bg-white/10 backdrop-blur-md text-white/80 text-[10px] px-3 py-1.5 rounded border border-white/20 font-mono tracking-widest uppercase"
+              >
+                离线优雅降级激活
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+export function Slide10() {
+  return (
+    <Slide title="面向超宽画幅的切片渲染架构" subtitle="Ultra-Wide Slice Rendering Architecture">
+      <div className="flex flex-col h-full w-full gap-8">
+        <p className="text-white/60 font-sans text-sm text-center leading-relaxed max-w-4xl mx-auto">
+          《豳风图》原卷分辨率高达 65230×2773，直接在浏览器中渲染会导致严重的内存溢出与卡顿。我们创新性地采用了切片化懒加载架构，结合 D3.js 的 translate3d 硬件加速技术，将前端显存占用降低了 90% 以上，实现了丝滑无缝的全景长卷漫游体验。
+        </p>
+        {/* Top: Data Comparison */}
+        <div className="h-1/3 flex items-center justify-center gap-16">
+          <div className="text-center">
+            <h4 className="text-white/50 font-sans mb-4 text-xs tracking-widest uppercase">理论峰值显存 (65230×2773全图)</h4>
+            <motion.div 
+              initial={{ scale: 0.95 }}
+              whileInView={{ scale: 1 }}
+              className="text-5xl font-mono text-white/40 font-light flex items-center gap-4 justify-center"
+            >
+              724MB
+              <AlertTriangle className="w-8 h-8 text-white/40" strokeWidth={1.5} />
+            </motion.div>
+          </div>
+          
+          <div className="text-3xl text-white/20 font-light">→</div>
+          
+          <div className="text-center">
+            <h4 className="text-white/50 font-sans mb-4 text-xs tracking-widest uppercase">懒加载架构显存 (10张6523px切片)</h4>
+            <motion.div 
+              initial={{ scale: 0.95 }}
+              whileInView={{ scale: 1.1 }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="text-6xl font-mono text-white/90 font-light"
+            >
+              72MB
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom: Rendering Mechanism */}
+        <div className="h-2/3 relative bg-white/5 border border-white/10 rounded-2xl p-10 overflow-hidden flex items-center">
+          {/* Long Scroll */}
+          <div className="w-full h-32 flex gap-1 relative">
+            {[...Array(10)].map((_, i) => (
+              <motion.div 
+                key={i}
+                className="flex-1 h-full border border-dashed border-white/20 bg-black/40 flex items-center justify-center relative"
+              >
+                <span className="text-[10px] text-white/30 font-mono tracking-widest uppercase">Slice {i+1}</span>
+                {/* Highlight active slices */}
+                <motion.div 
+                  animate={{ 
+                    opacity: [0, 1, 1, 0, 0],
+                    backgroundColor: ["transparent", "rgba(255, 255, 255, 0.1)", "rgba(255, 255, 255, 0.1)", "transparent", "transparent"]
+                  }}
+                  transition={{ 
+                    duration: 10, 
+                    repeat: Infinity,
+                    times: [0, 0.1, 0.3, 0.4, 1],
+                    delay: (i * 0.8) - 2 // Staggered to simulate moving window
+                  }}
+                  className="absolute inset-0 border border-white/50"
+                />
+              </motion.div>
+            ))}
+            
+            {/* Viewport Window */}
+            <motion.div 
+              animate={{ x: ["0%", "700%", "0%"] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 bottom-0 left-0 w-[30%] border-2 border-white/80 bg-white/5 z-10 shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-end justify-center pb-3"
+            >
+              <span className="text-white/90 text-[10px] font-mono tracking-widest uppercase bg-black/80 px-3 py-1.5 rounded border border-white/20 backdrop-blur-md">D3.js translate3d 加速</span>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+export function Slide11() {
+  return (
+    <Slide title="多维时空交互与全景巡游机制" subtitle="Multi-Dimensional Interaction & Panoramic Tour">
+      <div className="flex flex-col h-full w-full items-center justify-center relative">
+        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl z-40">
+          打破传统古画展示的单一线性浏览模式，我们构建了画中画（PIP）多维导览机制。用户在全景巡游时，点击画卷中的特定热点，即可触发对应区域的动态意象视频与深度语义解析，实现了从宏观长卷巡游到微观文化探究的无缝切换。
+        </p>
+        {/* Main PIP Area */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="w-full h-[500px] bg-black rounded-2xl border border-white/10 relative overflow-hidden shadow-2xl"
+        >
+          {/* Background Ancient Painting */}
+          <img src="https://picsum.photos/seed/panorama/1200/500?grayscale" alt="全景" className="w-full h-full object-cover opacity-50 mix-blend-luminosity" referrerPolicy="no-referrer" />
+          
+          {/* Dimming Overlay (Simulated Interaction) */}
+          <motion.div 
+            animate={{ opacity: [0, 0, 0.6, 0.6, 0] }}
+            transition={{ duration: 8, repeat: Infinity, times: [0, 0.2, 0.3, 0.8, 0.9] }}
+            className="absolute inset-0 bg-black z-10"
+          />
+
+          {/* Hotspot Click */}
+          <motion.div 
+            animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute top-1/3 left-1/3 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.8)] z-20 cursor-pointer"
+          />
+
+          {/* Video Portal Popup */}
+          <motion.div 
+            animate={{ 
+              opacity: [0, 0, 1, 1, 0],
+              y: [30, 30, 0, 0, 30],
+              scale: [0.95, 0.95, 1, 1, 0.95]
+            }}
+            transition={{ duration: 8, repeat: Infinity, times: [0, 0.2, 0.3, 0.8, 0.9] }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[340px] bg-black border border-white/20 rounded-xl z-30 overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.1)]"
+          >
+            <img src="https://picsum.photos/seed/video/600/340?grayscale" alt="视频" className="w-full h-full object-cover opacity-70 mix-blend-luminosity" referrerPolicy="no-referrer" />
+            
+            {/* Semantic Annotation */}
+            <motion.div 
+              animate={{ opacity: [0, 0, 0, 1, 1, 0] }}
+              transition={{ duration: 8, repeat: Infinity, times: [0, 0.3, 0.5, 0.55, 0.75, 0.8] }}
+              className="absolute top-1/4 right-1/4 bg-black/60 backdrop-blur-md border border-white/20 p-4 rounded-lg text-sm text-white/90 shadow-xl"
+            >
+              <div className="absolute -left-8 top-1/2 w-8 h-px bg-white/50" />
+              <div className="absolute -left-8 top-1/2 w-1.5 h-1.5 rounded-full bg-white -translate-y-1/2" />
+              <span className="font-serif tracking-wide">农夫挥锄动作分析</span><br/>
+              <span className="text-xs text-white/50 font-sans mt-2 block leading-relaxed">体现了南宋时期农业劳作特征与节气规律。<br/>基于《诗经·七月》的语义关联。</span>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Mini Map */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[400px] h-10 bg-black/80 backdrop-blur-xl rounded-full border border-white/10 z-40 flex items-center px-1.5 shadow-lg">
+            <div className="w-full h-7 bg-white/5 rounded-full relative overflow-hidden">
+              <img src="https://picsum.photos/seed/panorama/400/24?grayscale" alt="缩略图" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" referrerPolicy="no-referrer" />
+              {/* Tracking Box */}
+              <motion.div 
+                animate={{ x: ["0%", "300%", "0%"] }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                className="absolute top-0 bottom-0 left-0 w-1/4 border border-white/50 bg-white/10 rounded-full flex items-center justify-center"
+              >
+                <span className="text-[8px] text-white/80 font-mono tracking-widest uppercase">足迹矩阵</span>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </Slide>
+  );
+}
+
+export function Slide12() {
+  return (
+    <Slide title="沉浸式数字水墨视觉渲染算法" subtitle="Immersive Digital Ink Rendering">
+      <div className="flex flex-col h-full w-full">
+        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+          为了营造极致的东方美学沉浸感，系统的视觉呈现不仅停留在视频播放层面。我们通过 CSS mix-blend-mode 深度还原了宣纸的物理质感，并结合 WebGL 流体力学算法模拟了鼠标交互时的水墨晕染与波纹效果，让数字界面焕发古典生机。
+        </p>
+        <div className="grid grid-cols-3 gap-8 h-full w-full">
+        {/* Column 1: Rice Paper Overlay */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
+        >
+          <h4 className="font-serif text-white/90 mb-6 tracking-wide">宣纸纹理 (mix-blend-mode: overlay)</h4>
+          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-white">
+            <img src="https://picsum.photos/seed/art/300/400?grayscale" alt="原图" className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity" referrerPolicy="no-referrer" />
+            
+            {/* Toggle Overlay Animation */}
+            <motion.div 
+              animate={{ opacity: [0, 1, 1, 0, 0] }}
+              transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
+              className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')] mix-blend-multiply opacity-80"
+            />
+            
+            <div className="absolute bottom-4 left-0 right-0 text-center">
+              <motion.span 
+                animate={{ opacity: [1, 0, 0, 1, 1] }}
+                transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
+                className="bg-black/80 backdrop-blur-md border border-white/20 text-white/80 text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded"
+              >
+                Normal
+              </motion.span>
+              <motion.span 
+                animate={{ opacity: [0, 1, 1, 0, 0] }}
+                transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.5, 0.7, 1] }}
+                className="bg-white/90 text-black text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded absolute left-1/2 -translate-x-1/2 shadow-lg"
+              >
+                mix-blend-multiply
+              </motion.span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Column 2: Ink Glow */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
+        >
+          <h4 className="font-serif text-white/90 mb-6 text-center tracking-wide">水墨发光与脉冲<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase mt-2 block">(drop-shadow / scale 0.8-2.0)</span></h4>
+          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black flex items-center justify-center">
+            <motion.div 
+              animate={{ 
+                filter: [
+                  "drop-shadow(0 0 0px rgba(255,255,255,0))",
+                  "drop-shadow(0 0 20px rgba(255,255,255,0.4))",
+                  "drop-shadow(0 0 40px rgba(255,255,255,0.2))",
+                  "drop-shadow(0 0 0px rgba(255,255,255,0))"
+                ],
+                scale: [1, 1.05, 1.1, 1]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="w-24 h-24 rounded-full border border-white/30 flex items-center justify-center bg-white/5 backdrop-blur-sm"
+            >
+              <span className="font-serif text-white/90 text-3xl font-light">豳</span>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Column 3: WebGL Fluid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center"
+        >
+          <h4 className="font-serif text-white/90 mb-6 text-center tracking-wide">流体力学仿真 (WebGL)<br/><span className="text-xs text-white/50 font-sans tracking-widest uppercase mt-2 block">mouseForce=20, viscous=65</span></h4>
+          <div className="flex-1 w-full relative rounded-xl overflow-hidden border border-white/10 bg-black">
+            <img src="https://picsum.photos/seed/water/300/400?grayscale" alt="水面" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" referrerPolicy="no-referrer" />
+            
+            {/* Simulated WebGL Ripple */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+              <motion.circle 
+                cx="50%" cy="50%" r="10" 
+                fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5"
+                animate={{ r: [10, 120], opacity: [0.8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+              />
+              <motion.circle 
+                cx="50%" cy="50%" r="10" 
+                fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"
+                animate={{ r: [10, 180], opacity: [0.5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.8, ease: "easeOut" }}
+              />
+              {/* Simulated Mouse Path */}
+              <motion.path 
+                d="M 20 80 Q 50 50, 80 20" 
+                fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="15" strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: [0, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
+          </div>
+        </motion.div>
+      </div>
+      </div>
+    </Slide>
+  );
+}
