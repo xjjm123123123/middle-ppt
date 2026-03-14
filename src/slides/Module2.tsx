@@ -170,13 +170,13 @@ export function Slide6() {
 
         {/* Center: Connection Lines */}
         <div className="w-1/5 h-full relative flex items-center justify-center">
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 100 400" preserveAspectRatio="none">
             <motion.path 
-              d="M 0 150 C 50 150, 50 200, 100 200" 
+              d="M 50 0 L 50 400" 
               fill="none" 
               stroke="rgba(255,255,255,0.2)" 
               strokeWidth="1"
-              strokeDasharray="4,4"
+              strokeDasharray="4,8"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
