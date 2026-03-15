@@ -50,10 +50,7 @@ export function Slide4() {
           >
             <h3 className="text-xl font-serif text-white/90 mb-4 tracking-wide">端到端训练的不可行性</h3>
             <p className="text-sm text-white/70 font-sans mb-4 leading-relaxed text-justify">
-              然而，在尝试构建该方案的过程中，模型预训练环节暴露出了无法逾越的硬件算力鸿沟。从零开始预训练（Pre-training）具备时空连贯性的视频生成大模型，本身需要海量的视频数据流与集群级的分布式算力。在仅部署单张云端 RTX 5090（32GB 显存）的情况下，不仅算力严重不足，且 32GB 的显存容量限制了处理高维三维张量（视频数据）的能力。这导致训练周期被无限拉长，在异常艰难地推进了 50 步（Steps）的初步前向与反向传播后，梯度下降过程未能促使模型向最优解收敛。
-            </p>
-            <p className="text-sm text-white/70 font-sans mb-4 leading-relaxed text-justify">
-              早期验证结果显示，模型缺乏必要的运动先验知识，生成的视频样本出现了灾难性的失真与画面结构崩塌（如图 1、图 2 所示）。鉴于这种端到端的大规模自主预训练要求远超当前硬件算力上限，完全不具备工程落地可行性，本研究对数据与策略进行了全面降维重构。
+              然而，模型预训练环节遭遇了严峻的硬件算力瓶颈。从零预训练（Pre-training）具备时空连贯性的视频大模型需要集群级算力，仅靠单张云端 RTX 5090（32GB）不仅单步耗时极长，更无法承载高维视频张量。在艰难推进 50 步后，模型出现严重欠拟合，生成的画面因缺乏运动先验而呈现灾难性失真与结构崩塌。鉴于该方案超越算力上限，我们在工程落地层面转向了“降维策略”。
             </p>
             <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10 bg-black flex items-center justify-center">
               {/* Demo Video */}
