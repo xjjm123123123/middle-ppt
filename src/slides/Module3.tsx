@@ -255,7 +255,7 @@ export function Slide11() {
           className="w-full h-[500px] bg-black rounded-2xl border border-white/10 relative overflow-hidden shadow-2xl flex items-center justify-center"
         >
           <video 
-            src="/video/录屏2026-03-14 上午11.37.17.mov" 
+            src="/video/demo.mp4" 
             className="w-full h-full object-contain" 
             autoPlay 
             loop 
