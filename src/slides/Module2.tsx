@@ -151,57 +151,37 @@ export function Slide6() {
           大模型无法直接理解中国画的笔墨意趣。我们通过查阅故宫博物院等权威文献，提取关键美术史词汇（如“蚂蝗描”、“院体”），并将其转化为大模型可理解的结构化 Prompt，实现了从传统图像学语义到现代 AI 提示词的精准转译。
         </p>
         <div className="flex h-full w-full items-center gap-12">
-        {/* Left: Ancient Text */}
+        {/* Left: References */}
         <div className="w-2/5 h-[400px] relative group">
           <motion.div 
-            initial={{ opacity: 0, rotateY: -15 }}
-            whileInView={{ opacity: 1, rotateY: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full h-full bg-[#F0EFE2] rounded-lg shadow-2xl relative overflow-hidden text-black/80 font-serif flex border border-[#D8D8C0]"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full h-full bg-[#F0EFE2] rounded-lg shadow-2xl relative overflow-hidden text-black/80 font-serif flex flex-col border border-[#D8D8C0] p-6"
           >
             {/* Texture Overlay */}
             <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/rice-paper-2.png')] mix-blend-multiply pointer-events-none" />
             
-            {/* Image Section - Left */}
-            <div className="w-[62%] h-full p-6 pl-10 flex items-center justify-center relative z-10">
-              <div className="relative group-hover:scale-[1.02] transition-transform duration-700 ease-out">
-                <img 
-                  src="/images/images/screen-shot/截屏2026-03-11 下午7.20.54.png" 
-                  alt="故宫博物院考证文献" 
-                  className="w-full h-auto max-h-[300px] object-contain shadow-md border-2 border-white/40 rounded-sm"
-                />
-                {/* Image Caption */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[8px] text-black/30 font-mono tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  FIG.01 院体画风考证
-                </div>
-              </div>
-            </div>
+            <h3 className="text-sm font-bold text-black/90 mb-3 border-b border-cinnabar/20 pb-2 relative z-10 flex items-center gap-2 tracking-wider">
+                <span className="w-1 h-3 bg-cinnabar/80 rounded-sm"/>
+                参考文献 / References
+            </h3>
 
-            {/* Text Section - Right */}
-            <div className="w-[38%] h-full py-12 pr-8 pl-4 relative z-10 flex flex-col items-center" style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}>
-              {/* Decorative Line */}
-              <div className="absolute top-12 bottom-12 left-0 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent" />
-              
-              <h3 className="text-base font-bold text-black/90 tracking-[0.3em] leading-relaxed border-l-2 border-cinnabar/60 pl-4 mb-4 mt-2">
-                故宫博物院考证文献
-              </h3>
-              
-              <p className="text-[10px] leading-[2.4em] tracking-[0.15em] text-black/70 text-justify h-full pt-2">
-                画中人物衣纹多用
-                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">兰叶描</span>
-                与
-                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">蚂蝗描</span>，
-                呈现出典型的
-                <span className="text-cinnabar font-bold mx-0.5 pb-0.5 border-b border-cinnabar/30">南宋院体</span>
-                风格。笔法洗练，设色淡雅。
-              </p>
-              
-              {/* Seal */}
-              <div className="mt-auto pt-6 opacity-40 hover:opacity-80 transition-opacity duration-500">
-                 <div className="w-6 h-6 border border-cinnabar rounded-sm flex items-center justify-center bg-cinnabar/5">
-                    <span className="text-[6px] text-cinnabar font-bold">考据</span>
-                 </div>
-              </div>
+            <div className="overflow-y-auto flex-1 pr-2 relative z-10 scrollbar-thin scrollbar-thumb-cinnabar/20 scrollbar-track-transparent">
+                <ul className="space-y-2 text-[9px] leading-relaxed text-black/70 font-sans">
+                    <li>[20] Murray, Julia K. (1993). <i>Ma Hezhi and the Illustration of the Book of Odes.</i> Cambridge: Cambridge University Press.</li>
+                    <li>[21] Murray, Julia K. (1981). <i>Song Kao-tsung, Ma Ho-chih, and the Mao Shih Scrolls: Illustrations of the Classic of Poetry.</i> Ph.D. Dissertation, Princeton University.</li>
+                    <li>[22] Harrist, Robert E. (1994). Ma Hezhi and the illustration of the book of Odes. <i>The Journal of Asian Studies</i>, 53(3), 923-925.</li>
+                    <li>[23] 潘深亮. (2001). 宋 赵构 马和之 画豳风图卷考. <i>故宫博物院院刊 / 故宫名画记</i>.</li>
+                    <li>[24] 田艺珉. 宋 赵构 马和之 闵予小子之什图卷研究. <i>故宫博物院藏品研究</i>.</li>
+                    <li>[25] 马季戈. 南宋马和之《鹿鸣之什图》卷考辨. <i>故宫博物院藏品研究</i>.</li>
+                    <li>[26] 吴广义. 从文化学角度透视诗经《豳风·七月》主题的双重性.</li>
+                    <li>[27] 王湘文. 《毛诗品物图考》与中日交流. 台北: 国立故宫博物院.</li>
+                    <li>[28] 故宫博物院. (2001). 宋 赵构 马和之 画豳风图卷. <i>故宫名画记</i>.</li>
+                    <li>[29] (清) 阮元, 董诰 等编. 《石渠宝笈·续编》. 清内府书画著录.</li>
+                    <li>[30] (清) 卞永誉 编著. 《式古堂书画汇考》. 中国古代历代书画著录.</li>
+                    <li>[31] (明) 张丑 编著. 《清河书画舫》. 美术史与书画鉴赏著作.</li>
+                </ul>
             </div>
           </motion.div>
         </div>

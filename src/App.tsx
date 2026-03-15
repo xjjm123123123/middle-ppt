@@ -7,13 +7,17 @@ import { Slide4, Slide5, Slide6, Slide7, Slide8 } from './slides/Module2';
 import { Slide9, Slide10, Slide11, Slide12 } from './slides/Module3';
 import { Slide13, Slide14, Slide15 } from './slides/Module4';
 import { Slide16, Slide17, Slide18 } from './slides/Module5';
+import { TableOfContents } from './slides/TableOfContents';
+import { Section1, Section2, Section3, Section4 } from './slides/SectionTitles';
 
 const slides = [
-  Slide1, Slide2, Slide3,
-  Slide4, Slide5, Slide6, Slide7, Slide8,
+  Slide1, TableOfContents, 
+  Section1, Slide2, Slide3,
+  Section2, Slide4, Slide5, Slide6, Slide7, Slide8,
   Slide9, Slide10, Slide11, Slide12,
-  Slide13, Slide14, Slide15,
-  Slide16, Slide17, Slide18
+  Slide13, Slide14, Slide15, Slide16,
+  Section3, Slide17,
+  Section4, Slide18
 ];
 
 export default function App() {

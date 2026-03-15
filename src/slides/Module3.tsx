@@ -176,10 +176,10 @@ export function Slide10() {
             <motion.div 
               initial={{ scale: 0.95 }}
               whileInView={{ scale: 1 }}
-              className="text-5xl font-mono text-white/40 font-light flex items-center gap-4 justify-center"
+              className="text-5xl font-mono text-red-500 font-light flex items-center gap-4 justify-center"
             >
               724MB
-              <AlertTriangle className="w-8 h-8 text-white/40" strokeWidth={1.5} />
+              <AlertTriangle className="w-8 h-8 text-red-500" strokeWidth={1.5} />
             </motion.div>
           </div>
           
@@ -191,7 +191,7 @@ export function Slide10() {
               initial={{ scale: 0.95 }}
               whileInView={{ scale: 1.1 }}
               transition={{ delay: 0.5, type: "spring" }}
-              className="text-6xl font-mono text-white/90 font-light"
+              className="text-6xl font-mono text-green-500 font-light"
             >
               72MB
             </motion.div>

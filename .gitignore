@@ -7,3 +7,4 @@ coverage/
 .env*
 !.env.example
 public/video/*.mov
+public/video/all_generated_videos_collection/
