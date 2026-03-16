@@ -66,7 +66,7 @@ export function Slide2() {
             <p className="text-base leading-relaxed text-white/70 font-sans mb-6">
               如何通过生成大模型，跨越<span className="text-white font-medium">（传）南宋马和之《豳风图》长卷</span>的<span className="text-white font-medium">静态散点透视</span>与现代<span className="text-white font-medium">时序动态叙事</span>之间的鸿沟？
             </p>
-            <p className="text-xs leading-relaxed text-white/40 font-sans">
+            <p className="text-base leading-relaxed text-white/40 font-sans">
               传统书画的数字化展示多停留在静态高清扫描或简单的2D平移，缺乏对画中时空叙事与农耕文化的深度挖掘。本项目旨在利用 AIGC 技术，赋予古画动态生命力，打造沉浸式交互体验，探索数字人文视角下的文化遗产活化新路径。
             </p>
             <div className="mt-8 relative h-40 w-full rounded-lg overflow-hidden border border-white/10">
@@ -129,7 +129,7 @@ export function Slide3() {
   return (
     <Slide title="宏观进度追踪与中期锚点" subtitle="Macro Progress Tracking">
       <div className="flex flex-col h-full w-full justify-center">
-        <p className="text-white/60 font-sans text-sm mb-12 px-8 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-12 px-8 text-center leading-relaxed max-w-4xl mx-auto">
           本项目整体规划分为四个核心阶段。目前已顺利完成前期的图像语义解析与生成模型攻坚，正处于第三阶段（交互式系统设计与功能实现）的冲刺期。本次中期答辩将重点展示已跑通的算法管线与前端交互原型，并明确下一阶段的优化方向。
         </p>
         

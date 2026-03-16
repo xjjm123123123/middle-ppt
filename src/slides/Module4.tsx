@@ -10,10 +10,10 @@ export function Slide13() {
         <div className="bg-white/5 border border-white/10 p-8 rounded-2xl flex items-center justify-between shadow-lg">
           <div className="w-2/3">
             <h4 className="font-serif text-white/90 text-xl mb-4 tracking-wide">资源分布策略</h4>
-            <p className="text-white/60 font-sans text-sm leading-relaxed mb-3">
+            <p className="text-white/60 font-sans text-lg leading-relaxed mb-3">
               为实现毫秒级交互响应，系统采用“预生成+云存储+异步调用”的策略。将高算力消耗的视频生成环节前置，通过 Supabase 构建结构化的多模态资源矩阵。
             </p>
-            <p className="text-white/50 font-sans text-sm leading-relaxed">
+            <p className="text-white/50 font-sans text-lg leading-relaxed">
               这种架构有效打破了大模型实时生成的延迟瓶颈。结构化数据（坐标、语义）存储于 PostgreSQL，而大体积的切片图床与意象视频库则依托全球 CDN 加速，确保前端按需加载的极致流畅度。
             </p>
           </div>
@@ -124,7 +124,7 @@ export function Slide14() {
   return (
     <Slide title="垂直领域 RAG 智能导览与防幻觉" subtitle="Vertical Domain RAG & Anti-Hallucination">
       <div className="flex flex-col h-full w-full gap-6">
-        <p className="text-white/60 font-sans text-sm text-center leading-relaxed max-w-4xl mx-auto flex-shrink-0">
+        <p className="text-white/60 font-sans text-lg text-center leading-relaxed max-w-4xl mx-auto flex-shrink-0">
           通用大模型在解读《诗经·豳风》等垂直古籍领域时，极易产生历史事实错误与文化意象的“幻觉”。为此，我们引入了检索增强生成（RAG）技术，将《诗经》原文、南宋农书等权威文献向量化，在调用大模型前注入精准上下文，从根本上遏制了文化常识的生成偏差。
         </p>
         
@@ -256,7 +256,7 @@ export function Slide15() {
     <Slide title="语义检索匹配权重打分机制" subtitle="Semantic Retrieval Scoring Mechanism">
       <div className="flex flex-col h-full w-full gap-8">
         <div className="text-center mb-2">
-          <p className="text-white/60 font-sans text-sm leading-relaxed max-w-4xl mx-auto">
+          <p className="text-white/60 font-sans text-lg leading-relaxed max-w-4xl mx-auto">
             如表2-4-1所示，当用户提出问题时，平台内部的RAG检索引擎遍历本地知识库，根据权重表为语料打分，抽取Top-K条目。相关古籍上下文连同用户提问，被打包进具有特定身份指令的综合Prompt投喂给大模型，进而生成具备较高准确度与史实依据的导览回复。
           </p>
         </div>

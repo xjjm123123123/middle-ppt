@@ -15,7 +15,7 @@ export function Slide4() {
             className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl h-[400px] flex flex-col"
           >
             <h3 className="text-xl font-serif text-white/90 mb-4 tracking-wide">前期工作量：精细标注</h3>
-            <p className="text-sm text-white/70 font-sans mb-4 leading-relaxed">
+            <p className="text-lg text-white/70 font-sans mb-4 leading-relaxed">
               为构建高质量的训练集，我们对《豳风图》进行了超高分辨率切片，并使用 LabelMe 进行了像素级的多边形语义标注，提取了人物、农具、背景等核心要素。
             </p>
             <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10">
@@ -49,7 +49,7 @@ export function Slide4() {
             className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl h-[400px] flex flex-col"
           >
             <h3 className="text-xl font-serif text-white/90 mb-4 tracking-wide">端到端训练的不可行性</h3>
-            <p className="text-sm text-white/70 font-sans mb-4 leading-relaxed text-justify">
+            <p className="text-lg text-white/70 font-sans mb-4 leading-relaxed text-justify">
               然而，模型预训练环节遭遇了严峻的硬件算力瓶颈。从零预训练（Pre-training）具备时空连贯性的视频大模型需要集群级算力，仅靠单张云端 RTX 5090（32GB）不仅单步耗时极长，更无法承载高维视频张量。在艰难推进 50 步后，模型出现严重欠拟合，生成的画面因缺乏运动先验而呈现灾难性失真与结构崩塌。鉴于该方案超越算力上限，我们在工程落地层面转向了“降维策略”。
             </p>
             <div className="relative flex-1 rounded-lg overflow-hidden border border-white/10 bg-black flex items-center justify-center">
@@ -81,7 +81,7 @@ export function Slide5() {
   return (
     <Slide title="降维策略" subtitle="基于文本叙事驱动的分镜提取">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-6 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-6 text-center leading-relaxed max-w-4xl mx-auto">
           面对算力与模型的双重限制，我们采取了“降维解耦”策略。放弃对全画卷的整体动态化，转而基于《诗经》文本的叙事逻辑，提取关键分镜。通过掩码技术分离动态主体与静态背景，大幅降低了生成任务的复杂度。
         </p>
         {/* Top 3 Columns */}
@@ -147,7 +147,7 @@ export function Slide6() {
   return (
     <Slide title="提示词工程与图像学语义转译" subtitle="Prompt Engineering & Semantic Translation">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-10 text-center leading-relaxed max-w-4xl mx-auto">
           大模型无法直接理解中国画的笔墨意趣。我们通过查阅故宫博物院等权威文献，提取关键美术史词汇（如“蚂蝗描”、“院体”），并将其转化为大模型可理解的结构化 Prompt，实现了从传统图像学语义到现代 AI 提示词的精准转译。
         </p>
         <div className="flex h-full w-full items-center gap-12">
@@ -312,7 +312,7 @@ export function Slide7() {
   return (
     <Slide title="双阶段演进" subtitle="开源大模型推理与稳态超参数">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-10 text-center leading-relaxed max-w-4xl mx-auto">
           在基座模型选择上，我们采用了最新开源的 Wan 2.1 I2V 14B 模型。经过 70 余次的消融实验与迭代，我们成功锁定了针对南宋院体画风的最佳超参数组合（Sampling Steps, CFG Scale 等），在画面稳定度与动态连贯性之间取得了最优解。
         </p>
         <div className="flex h-full w-full gap-12 items-center">
@@ -523,7 +523,7 @@ export function Slide8() {
   return (
     <Slide title="四步稳定化后处理管线" subtitle="4-Step Post-Processing Pipeline">
       <div className="flex flex-col h-full w-full justify-center">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-10 text-center leading-relaxed max-w-4xl mx-auto">
           针对 AI 生成视频中常见的背景闪烁、边缘抖动和时序不连贯等痛点，我们设计了一套基于传统计算机视觉（CV）的四步后处理管线。通过光流检测与形态学掩码，将动态人物与静态背景重新融合，显著提升了最终视觉呈现的可用性与美感。
         </p>
         <div className="grid grid-cols-4 gap-6 h-[300px]">
@@ -550,7 +550,7 @@ export function Slide8() {
 
                 {/* Hover Overlay with Description */}
                 <div className="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-sm">
-                  <p className="text-white/90 text-xs font-sans leading-relaxed text-justify shadow-black drop-shadow-md">
+                  <p className="text-white/90 text-base font-sans leading-relaxed text-justify shadow-black drop-shadow-md">
                     {step.desc}
                   </p>
                 </div>

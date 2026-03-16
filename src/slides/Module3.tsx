@@ -166,7 +166,7 @@ export function Slide10() {
   return (
     <Slide title="面向超宽画幅的切片渲染架构" subtitle="Ultra-Wide Slice Rendering Architecture">
       <div className="flex flex-col h-full w-full gap-8">
-        <p className="text-white/60 font-sans text-sm text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg text-center leading-relaxed max-w-4xl mx-auto">
           《豳风图》原卷分辨率高达 65230×2773，直接在浏览器中渲染会导致严重的内存溢出与卡顿。我们创新性地采用了切片化懒加载架构，结合 D3.js 的 translate3d 硬件加速技术，将前端显存占用降低了 90% 以上，实现了丝滑无缝的全景长卷漫游体验。
         </p>
         {/* Top: Data Comparison */}
@@ -246,7 +246,7 @@ export function Slide11() {
   return (
     <Slide title="多维时空交互与全景巡游机制" subtitle="Multi-Dimensional Interaction & Panoramic Tour">
       <div className="flex flex-col h-full w-full items-center justify-center relative">
-        <p className="text-white/60 font-sans text-sm mb-10 text-center leading-relaxed max-w-4xl z-40">
+        <p className="text-white/60 font-sans text-lg mb-10 text-center leading-relaxed max-w-4xl z-40">
           打破传统古画展示的单一线性浏览模式，我们构建了画中画（PIP）多维导览机制。用户在全景巡游时，点击画卷中的特定热点，即可触发对应区域的动态意象视频与深度语义解析，实现了从宏观长卷巡游到微观文化探究的无缝切换。
         </p>
         {/* Main PIP Area */}
@@ -283,7 +283,7 @@ export function Slide12() {
   return (
     <Slide title="沉浸式数字水墨视觉渲染算法" subtitle="Immersive Digital Ink Rendering">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-sm mb-6 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-lg mb-6 text-center leading-relaxed max-w-4xl mx-auto">
           为了营造极致的东方美学沉浸感，系统的视觉呈现不仅停留在视频播放层面。我们通过 CSS mix-blend-mode 深度还原了宣纸的物理质感，并结合 WebGL 流体力学算法模拟了鼠标交互时的水墨晕染与波纹效果，让数字界面焕发古典生机。
         </p>
         <div className="grid grid-cols-3 gap-6 h-full w-full min-h-0">

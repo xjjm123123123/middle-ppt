@@ -6,7 +6,7 @@ export function Slide16() {
   return (
     <Slide title="工程完成度与系统演示" subtitle="Engineering Completion & System Demo">
       <div className="flex flex-col h-full w-full gap-4">
-        <p className="text-gray-400 font-sans text-sm text-center leading-relaxed max-w-4xl mx-auto line-clamp-2">
+        <p className="text-gray-400 font-sans text-lg text-center leading-relaxed max-w-4xl mx-auto line-clamp-2">
           本项目具有较高的工程完成度与系统复杂度。不仅是算法原型的理论验证，更是一套落地的高可用全栈工程实践。前端交互、后端服务与算法脚本均已完成脱敏处理，具备开源条件。
         </p>
         <div className="flex flex-1 min-h-0 w-full gap-6">
@@ -167,7 +167,7 @@ export function Slide17() {
   return (
     <Slide title="后期研究计划：模型微调与量化评估" subtitle="Future Plan: Fine-tuning & Evaluation">
       <div className="flex flex-col h-full w-full gap-8">
-        <p className="text-gray-400 font-sans text-sm text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-gray-400 font-sans text-lg text-center leading-relaxed max-w-4xl mx-auto">
           针对中期阶段发现的基座模型在特定古画细节（如衣纹走势、农具形制）上的生成瑕疵，下一阶段将重点攻克专属 LoRA 模型的微调训练。同时，我们将引入多维度客观评价指标与专家主观盲测，建立一套严谨的生成质量与文化表达评估体系。
         </p>
 
@@ -178,7 +178,7 @@ export function Slide17() {
               <Target className="w-5 h-5 text-bronze" />
               专属 LoRA 模型微调
             </h4>
-            <p className="text-sm text-gray-400 font-sans leading-relaxed">
+            <p className="text-lg text-gray-400 font-sans leading-relaxed">
               针对基础模型在南宋画风细节（如衣纹、农具形制）上的不足，计划构建高质量的《诗经》图绘数据集进行微调。
             </p>
           </div>
@@ -225,7 +225,7 @@ export function Slide17() {
                 <span className="text-xs font-mono text-white">01</span>
               </div>
               <h5 className="font-serif text-white mb-3 tracking-wide">客观指标</h5>
-              <p className="text-xs text-gray-400 font-sans leading-relaxed">
+              <p className="text-base text-gray-400 font-sans leading-relaxed">
                 评估生成视频帧与原画切片的结构相似度 (SSIM) 与峰值信噪比 (PSNR)，量化视觉保真度。
               </p>
             </motion.div>
@@ -240,7 +240,7 @@ export function Slide17() {
                 <span className="text-xs font-mono text-white">02</span>
               </div>
               <h5 className="font-serif text-white mb-3 tracking-wide">主观体验</h5>
-              <p className="text-xs text-gray-400 font-sans leading-relaxed">
+              <p className="text-base text-gray-400 font-sans leading-relaxed">
                 设计 Likert 五级量表问卷，收集用户在沉浸感、交互流畅度、界面美观度等维度的评分。
               </p>
             </motion.div>
@@ -255,7 +255,7 @@ export function Slide17() {
                 <span className="text-xs font-mono text-white">03</span>
               </div>
               <h5 className="font-serif text-white mb-3 tracking-wide">人文学术盲审</h5>
-              <p className="text-xs text-gray-400 font-sans leading-relaxed">
+              <p className="text-base text-gray-400 font-sans leading-relaxed">
                 邀请历史学/艺术史专家，对 RAG 导览内容的准确性与意象生成的文化契合度进行盲审。
               </p>
             </motion.div>
@@ -286,7 +286,7 @@ export function Slide18() {
               <div className="mt-0.5"><CheckCircle2 className="w-4 h-4 text-cinnabar" /></div>
               <div>
                 <h5 className="text-white font-sans text-sm mb-2 tracking-wide">算力瓶颈与 OOM 风险</h5>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed">
                   超宽画幅视频生成极耗显存。缓解策略：严格执行切片渲染机制，探索模型量化技术。
                 </p>
               </div>
@@ -301,7 +301,7 @@ export function Slide18() {
               <div className="mt-0.5"><CheckCircle2 className="w-4 h-4 text-cinnabar" /></div>
               <div>
                 <h5 className="text-white font-sans text-sm mb-2 tracking-wide">LoRA 灾难性遗忘</h5>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed">
                   微调可能导致模型丧失通用生成能力。缓解策略：采用较低的 Rank 值，结合正则化数据集。
                 </p>
               </div>
@@ -316,7 +316,7 @@ export function Slide18() {
               <div className="mt-0.5"><CheckCircle2 className="w-4 h-4 text-cinnabar" /></div>
               <div>
                 <h5 className="text-white font-sans text-sm mb-2 tracking-wide">垂直领域数据稀疏性</h5>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed">
                   高质量的南宋农耕图像数据有限。缓解策略：引入数据增强技术，跨朝代相近画风迁移。
                 </p>
               </div>
@@ -331,7 +331,7 @@ export function Slide18() {
               <div className="mt-0.5"><CheckCircle2 className="w-4 h-4 text-cinnabar" /></div>
               <div>
                 <h5 className="text-white font-sans text-sm mb-2 tracking-wide">CMS 对比沙盒计划</h5>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-base text-gray-400 leading-relaxed">
                   计划引入内容管理系统沙盒，对比不同算法版本（如基座模型 vs LoRA微调）的生成效果，建立迭代基准。
                 </p>
               </div>
