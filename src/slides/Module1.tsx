@@ -129,7 +129,7 @@ export function Slide3() {
   return (
     <Slide title="宏观进度追踪与中期锚点" subtitle="Macro Progress Tracking">
       <div className="flex flex-col h-full w-full justify-center">
-        <p className="text-white/60 font-sans text-lg mb-12 px-8 text-center leading-relaxed max-w-4xl mx-auto">
+        <p className="text-white/60 font-sans text-base mb-8 px-8 text-center leading-relaxed max-w-5xl mx-auto">
           本项目整体规划分为四个核心阶段。目前已顺利完成前期的图像语义解析与生成模型攻坚，正处于第三阶段（交互式系统设计与功能实现）的冲刺期。本次中期答辩将重点展示已跑通的算法管线与前端交互原型，并明确下一阶段的优化方向。
         </p>
         
