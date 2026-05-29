@@ -650,24 +650,84 @@ export function FinalSlide12() {
   );
 }
 
+const HOTSPOT_IMMERSION_SHOT = '/images/images/screen-shot/截屏2026-03-11 下午8.42.09.png';
+const HOTSPOT_INTERPRETATION_SHOT = '/images/images/screen-shot/截屏2026-03-11 下午8.42.16.png';
+
 export function FinalSlide13() {
+  const modes = [
+    {
+      badge: 'I · 沉浸',
+      title: '沉浸模式',
+      subtitle: '点击热点后 · 全屏意象进入',
+      caption: 'VideoPortal · 沉浸轨：画面占满视口，弱 UI 干扰',
+      items: ['生成视频全屏播放', '低信息密度与氛围优先', 'I 键 / 顶栏切换', '面向审美体验与情绪共鸣'],
+      img: HOTSPOT_IMMERSION_SHOT,
+      tone: 'bronze' as Tone,
+      icon: <GalleryHorizontal className="w-7 h-7 text-bronze" strokeWidth={1.2} />,
+    },
+    {
+      badge: 'C · 解读',
+      title: '解读模式',
+      subtitle: '点击热点后 · 语义卡片展开',
+      caption: 'VideoPortal · 解读轨：背景 / AI 视点 / 文化阐释并列',
+      items: ['热点语义卡片侧栏', '诗旨背景与 AI 语义视点', 'C 键 / 顶栏切换', '面向知识获取与文化理解'],
+      img: HOTSPOT_INTERPRETATION_SHOT,
+      tone: 'jade' as Tone,
+      icon: <MessageSquareText className="w-7 h-7 text-jade" strokeWidth={1.2} />,
+    },
+  ];
+
   return (
-    <Slide title="双模式交互：审美进入与知识理解" subtitle="Immersion / Interpretation">
-      <div className="grid grid-cols-2 gap-10 h-full items-center">
-        <Panel tone="bronze" className="h-[430px]">
-          <GalleryHorizontal className="w-10 h-10 text-bronze mb-5" />
-          <SmallHeading>沉浸模式</SmallHeading>
-          <SimpleList items={['低信息密度', '弱 UI 干扰', '画面与氛围优先', '面向审美体验和情绪进入']} />
-        </Panel>
-        <Panel tone="jade" className="h-[430px]">
-          <MessageSquareText className="w-10 h-10 text-jade mb-5" />
-          <SmallHeading>解读模式</SmallHeading>
-          <SimpleList items={['热点标注', '推荐问题', '语义卡片', 'RAG 导览', '面向知识获取和文化理解']} />
-        </Panel>
+    <Slide title="双模式交互：审美进入与知识理解" subtitle="Hotspot → VideoPortal · I / C Dual Track">
+      <div className="h-full flex flex-col gap-4">
+        <div className="flex items-center justify-center gap-2 text-[11px] font-sans text-white/45 flex-wrap">
+          <span className="px-2.5 py-1 rounded-full border border-white/12">点击金色热点</span>
+          <span className="text-bronze/45">→</span>
+          <span className="px-2.5 py-1 rounded-full border border-white/12">VideoPortal 弹层</span>
+          <span className="text-bronze/45">→</span>
+          <span className="px-2.5 py-1 rounded-full border border-bronze/35 text-bronze/75">I 沉浸</span>
+          <span className="text-white/25">/</span>
+          <span className="px-2.5 py-1 rounded-full border border-jade/35 text-jade/75">C 解读</span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-5 flex-1 min-h-0">
+          {modes.map((mode) => (
+            <div
+              key={mode.title}
+              className={`rounded-lg border overflow-hidden shadow-lg flex flex-col min-h-0 ${toneClass[mode.tone]}`}
+            >
+              <div className="relative flex-[1.35] min-h-[240px] bg-black/60">
+                <LazyImg
+                  src={mode.img}
+                  alt={`${mode.title}界面`}
+                  className="w-full h-full object-contain object-center bg-black/80"
+                />
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 border border-white/10 text-[10px] font-mono tracking-wider text-white/80">
+                  {mode.badge}
+                </div>
+                <div className="absolute bottom-0 inset-x-0 px-3 py-2 bg-gradient-to-t from-black/85 to-transparent text-[10px] text-white/55 text-center">
+                  {mode.caption}
+                </div>
+              </div>
+
+              <div className="p-4 shrink-0">
+                <div className="flex items-start gap-3 mb-2">
+                  {mode.icon}
+                  <div>
+                    <SmallHeading>{mode.title}</SmallHeading>
+                    <p className="text-white/45 text-xs font-sans tracking-wide -mt-1">{mode.subtitle}</p>
+                  </div>
+                </div>
+                <SimpleList items={mode.items} className="text-xs" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <Lead className="text-center text-sm">
+          同一热点触发 VideoPortal 后，用户可在顶栏 I/C 切换：沉浸模式让生成视频占据主视野；解读模式叠加诗旨背景与 AI 语义视点，分别回应审美满足与认知满足。
+        </Lead>
       </div>
-      <Lead className="absolute bottom-12 left-20 right-20 text-center">
-        使用与满足理论对应两类需求：沉浸模式回应审美满足，解读模式回应认知满足。
-      </Lead>
     </Slide>
   );
 }
