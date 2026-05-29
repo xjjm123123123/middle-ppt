@@ -49,7 +49,29 @@ function playWithLimit(el: HTMLVideoElement) {
     .catch(() => {});
 }
 
-function WallVideo({ src, isSecondWave }: { src: string; isSecondWave: boolean }) {
+function showStillFrame(el: HTMLVideoElement) {
+  const capture = () => {
+    el.pause();
+    if (el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      el.currentTime = Math.min(0.08, el.duration > 0 ? el.duration * 0.05 : 0.08);
+    }
+  };
+  if (el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    capture();
+    return;
+  }
+  el.addEventListener('loadeddata', capture, { once: true });
+}
+
+function WallVideo({
+  src,
+  isSecondWave,
+  loadDelay,
+}: {
+  src: string;
+  isSecondWave: boolean;
+  loadDelay: number;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const loadedRef = useRef(false);
@@ -61,16 +83,23 @@ function WallVideo({ src, isSecondWave }: { src: string; isSecondWave: boolean }
     el.src = src;
   }, [src]);
 
-  const unloadVideo = useCallback(() => {
-    const el = videoRef.current;
-    if (!el || !loadedRef.current) return;
-    pauseTracked(el);
-    el.removeAttribute('src');
-    el.load();
-    loadedRef.current = false;
-  }, []);
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      loadVideo();
+      const el = videoRef.current;
+      if (!el) return;
+      if (isSecondWave) {
+        playWithLimit(el);
+      } else {
+        showStillFrame(el);
+      }
+    }, loadDelay);
+
+    return () => window.clearTimeout(timer);
+  }, [isSecondWave, loadDelay, loadVideo]);
 
   useEffect(() => {
+    if (!isSecondWave) return;
     const container = containerRef.current;
     const video = videoRef.current;
     if (!container || !video) return;
@@ -79,24 +108,21 @@ function WallVideo({ src, isSecondWave }: { src: string; isSecondWave: boolean }
       ([entry]) => {
         if (!entry.isIntersecting) {
           pauseTracked(video);
-          if (!isSecondWave) unloadVideo();
+          showStillFrame(video);
           return;
         }
-        if (isSecondWave) {
-          loadVideo();
-          playWithLimit(video);
-        }
+        loadVideo();
+        playWithLimit(video);
       },
-      { threshold: 0.15 },
+      { threshold: 0.1 },
     );
 
     observer.observe(container);
     return () => {
       observer.disconnect();
       pauseTracked(video);
-      if (!isSecondWave) unloadVideo();
     };
-  }, [isSecondWave, loadVideo, unloadVideo]);
+  }, [isSecondWave, loadVideo]);
 
   return (
     <div
@@ -110,18 +136,22 @@ function WallVideo({ src, isSecondWave }: { src: string; isSecondWave: boolean }
         const el = videoRef.current;
         if (!el || isSecondWave) return;
         pauseTracked(el);
-        unloadVideo();
+        showStillFrame(el);
       }}
       className="relative rounded-lg overflow-hidden border border-white/10 bg-black/40 aspect-video group hover:z-10 hover:scale-[1.35] hover:border-white/50 transition-transform duration-300 shadow-lg contain-paint will-change-transform"
     >
       <video
         ref={videoRef}
         data-lazy-wall="true"
-        className={`w-full h-full object-cover transition-[opacity,filter] duration-500 ${isSecondWave ? 'opacity-100' : 'opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100'}`}
+        className={`w-full h-full object-cover transition-[opacity,filter] duration-500 ${
+          isSecondWave
+            ? 'opacity-100'
+            : 'opacity-80 grayscale brightness-90 contrast-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 group-hover:opacity-100'
+        }`}
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
       />
       <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none bg-gradient-to-t from-black/80 to-transparent">
         <span className="text-[8px] text-white/90 font-mono truncate px-1 pb-1 w-full text-center">
@@ -139,15 +169,20 @@ export function VideoWall() {
     <Slide title="视频效果迭代墙" subtitle={`Video Generation Iteration Wall · ${videos.length} Samples`}>
       <div className="h-full w-full overflow-hidden flex flex-col justify-center">
         <div className="grid grid-cols-6 md:grid-cols-8 gap-2">
-          {videos.map((src) => (
-            <WallVideo key={src} src={src} isSecondWave={src.includes('videos copy')} />
+          {videos.map((src, index) => (
+            <WallVideo
+              key={src}
+              src={src}
+              isSecondWave={src.includes('videos copy')}
+              loadDelay={Math.floor(index / 4) * 120}
+            />
           ))}
         </div>
 
         <div className="mt-4 text-center">
           <p className="text-white/30 text-[10px] font-sans tracking-widest uppercase">
-            Total {videos.length} Iterations · <span className="text-bronze">Highlighted</span> auto-play (max{' '}
-            {MAX_AUTOPLAY}) · hover others to preview · 翻页自动暂停
+            Total {videos.length} Iterations · early samples in <span className="text-white/55">grayscale</span> ·{' '}
+            <span className="text-bronze">Highlighted</span> auto-play (max {MAX_AUTOPLAY}) · hover to preview
           </p>
         </div>
       </div>
