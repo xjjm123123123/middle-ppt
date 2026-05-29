@@ -16,6 +16,7 @@ import {
   FinalSlide18,
   FinalSlide19,
   FinalSlide20,
+  FinalSlideThanks,
 } from './slides/FinalSlides';
 import { Slide5, Slide6, Slide7, Slide8 } from './slides/Module2';
 import { Slide9, Slide10, Slide11, Slide12 } from './slides/Module3';
@@ -65,6 +66,7 @@ const frontSlides = [
   FinalSlide18,
   FinalSlide19,
   FinalSlide20,
+  FinalSlideThanks,
 ];
 
 const slides = frontSlides;

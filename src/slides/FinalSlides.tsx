@@ -8,6 +8,7 @@ import {
   Film,
   GalleryHorizontal,
   Globe2,
+  Heart,
   Layers3,
   MessageSquareText,
   Route,
@@ -1039,6 +1040,44 @@ export function FinalSlide20() {
         />
       </div>
     </Slide>
+  );
+}
+
+export function FinalSlideThanks() {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center relative bg-[var(--color-bg-dark)] overflow-hidden section-panel">
+      <img
+        src="/images/images/binfengtu_small.jpg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-25"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="absolute inset-0 bg-black/68" />
+      <div className="absolute w-[68vw] h-[68vw] rounded-full border border-bronze/15 opacity-25 pointer-events-none" />
+
+      <div className="relative z-10 max-w-4xl text-center px-10 slide-fade-in">
+        <Heart className="w-10 h-10 text-bronze/80 mx-auto mb-8" strokeWidth={1.2} />
+
+        <h1 className="text-4xl md:text-6xl font-serif font-light text-white tracking-[0.22em] mb-6">致谢</h1>
+
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-bronze/60 to-transparent mx-auto mb-10" />
+
+        <p className="text-xl md:text-2xl font-serif text-white/88 leading-relaxed tracking-wide mb-4">
+          感谢各位老师一直以来的悉心指导与帮助
+        </p>
+        <p className="text-base md:text-lg font-serif text-white/58 leading-relaxed tracking-wide mb-12">
+          感谢答辩委员会各位老师的聆听、提问与批评指正
+        </p>
+
+        <div className="inline-flex flex-col gap-3 text-sm text-white/50 tracking-[0.14em]">
+          <div className="w-16 h-px bg-bronze/40 mx-auto" />
+          <p>汇报人：许家铭</p>
+          <p>指导教师：闫子飞</p>
+          <p className="text-bronze/65 text-xs tracking-[0.2em] pt-2">恳请各位老师批评指正</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
