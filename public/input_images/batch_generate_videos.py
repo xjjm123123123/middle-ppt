@@ -46,6 +46,9 @@ def batch_generate_videos(config_path, output_dir, source_image_dir=None):
             continue
         
         prompt = img_config.get('prompt', '')
+        brushwork_prompt = img_config.get('brushwork_prompt', '')
+        if brushwork_prompt:
+            prompt = f"{prompt.strip()} {brushwork_prompt.strip()}".strip()
         negative_prompt = img_config.get('negative_prompt', '')
         strength = img_config.get('strength', default_settings.get('strength', 0.75))
         num_frames = img_config.get('num_frames', default_settings.get('num_frames', 16))

@@ -57,18 +57,15 @@ export function Slide4() {
               <video
                 src="/video/微信视频2026-03-14_095721_877.mp4"
                 className="w-full h-full object-contain"
-                autoPlay
                 loop
                 muted
                 playsInline
+                preload="none"
+                autoPlay
               />
-              <motion.div
-                animate={{ opacity: [1, 0.7, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute bottom-0 left-0 right-0 bg-cinnabar/10 backdrop-blur-md border-t border-cinnabar/30 text-cinnabar text-center py-3 font-mono text-xs tracking-widest uppercase"
-              >
+              <div className="absolute bottom-0 left-0 right-0 bg-cinnabar/15 border-t border-cinnabar/30 text-cinnabar text-center py-3 font-mono text-xs tracking-widest uppercase">
                 ⚠ 50 Steps 收敛失败 / OOM显存溢出 (云端 RTX 4090 24GB)
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -147,8 +144,9 @@ export function Slide6() {
   return (
     <Slide title="提示词工程与图像学语义转译" subtitle="Prompt Engineering & Semantic Translation">
       <div className="flex flex-col h-full w-full">
-        <p className="text-white/60 font-sans text-lg mb-10 text-center leading-relaxed max-w-4xl mx-auto">
-          大模型无法直接理解中国画的笔墨意趣。我们通过查阅故宫博物院等权威文献，提取关键美术史词汇（如“蚂蝗描”、“院体”），并将其转化为大模型可理解的结构化 Prompt，实现了从传统图像学语义到现代 AI 提示词的精准转译。
+        <p className="text-white/60 font-sans text-base mb-6 text-center leading-relaxed max-w-4xl mx-auto">
+          大模型无法直接理解中国画的笔墨意趣。除主体与叙事 Prompt 外，单独设计{' '}
+          <span className="text-bronze">brushwork_prompt</span> 用于约束水墨笔触（蚂蝗描、兰叶描、纸本渗化等），与场景语义解耦，避免生成视频时笔触被“洗平”或数字化。
         </p>
         <div className="flex h-full w-full items-center gap-12">
           {/* Left: References */}
@@ -216,21 +214,30 @@ export function Slide6() {
                 <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                 <span className="ml-4 text-[10px] text-white/40 font-mono tracking-widest uppercase">prompt_config.json</span>
               </div>
-              <div className="p-6 font-mono text-xs leading-relaxed text-white/60 overflow-y-auto">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 1 }}
-                >
-                  <span className="text-jade">"prompt"</span>: <span className="text-white/50">"Animation of a scene from 'Binfeng Tu' by Ma Hezhi. Traditional Chinese ink and color painting on silk. A procession of ancient figures wearing robes walks across a landscape. They hold long, thin poles with small red accents at the tips. A horse is part of the group. The background features stylized rocks and sparse trees drawn with 'orchid leaf' brushstrokes. Soft, serene movement, historical atmosphere."</span>,
+              <div className="p-5 font-mono text-[10px] leading-relaxed text-white/60 overflow-y-auto flex-1 space-y-3">
+                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.8 }}>
+                  <span className="text-jade">"prompt"</span>:{' '}
+                  <span className="text-white/50">
+                    "…scene from Binfeng Tu, figures, landscape, soft movement…"
+                  </span>
                 </motion.div>
-                <br />
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  transition={{ delay: 1.5 }}
+                  transition={{ delay: 1.1 }}
+                  className="rounded-md border border-bronze/25 bg-bronze/5 p-3"
                 >
-                  <span className="text-cinnabar">"negative_prompt"</span>: <span className="text-white/40">"blurry, low quality, distorted, modern style, photograph, realistic, 3D render, ugly, deformed, noisy"</span>
+                  <span className="text-bronze block text-[9px] tracking-widest mb-1.5 uppercase">水墨笔触专用</span>
+                  <span className="text-bronze">"brushwork_prompt"</span>:{' '}
+                  <span className="text-white/55">
+                    "Ma Hezhi Southern Song court style, mantis-horsefly line (mayihuang miao), broken-yet-linked strokes with rhythmic thickness, orchid-leaf and hemp-fiber texture, soft ink wash gradation on silk, light mineral color, preserve hand-painted brush edges, no airbrush smoothing or 3D shading"
+                  </span>
+                </motion.div>
+                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.4 }}>
+                  <span className="text-cinnabar">"negative_prompt"</span>:{' '}
+                  <span className="text-white/40">
+                    "blurry, photograph, realistic, 3D render, plastic skin, hard cinematic lighting, cartoon, over-sharpened digital edges"
+                  </span>
                 </motion.div>
               </div>
             </motion.div>

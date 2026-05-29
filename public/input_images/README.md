@@ -44,7 +44,8 @@ python scripts/inference_img2video.py \
 ```json
 {
   "image_path": "图片文件名.png",
-  "prompt": "正面提示词 - 描述您想要的效果",
+  "prompt": "正面提示词 - 描述场景、人物与动作",
+  "brushwork_prompt": "水墨笔触专用 - 蚂蝗描、兰叶描、纸本渗化、绢本设色等笔法约束",
   "negative_prompt": "负面提示词 - 描述您不想要的效果",
   "strength": 0.75,
   "num_frames": 16,
@@ -54,6 +55,9 @@ python scripts/inference_img2video.py \
 ```
 
 ## 🎨 提示词设计建议
+
+### 水墨笔触提示词（brushwork_prompt）
+专门约束生成视频的水墨笔法，与场景叙事 `prompt` 分离，避免笔触在拼接时被语义 Prompt 稀释。批处理脚本会自动将二者合并后送入模型。
 
 ### 正面提示词（prompt）
 - **风格描述**：traditional Chinese painting, ancient style, ink wash painting

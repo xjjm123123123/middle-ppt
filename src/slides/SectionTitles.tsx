@@ -1,67 +1,41 @@
-import { motion } from 'motion/react';
-import { Clock, CheckCircle2, Calendar, AlertTriangle } from 'lucide-react';
+import { BookOpenText, Cpu, Radio, Sparkles } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 interface SectionProps {
   id: string;
   title: string;
   subtitle: string;
-  icon: React.ReactNode;
+  summary: string;
+  icon: ReactNode;
   color: string;
 }
 
-function SectionSlide({ id, title, subtitle, icon, color }: SectionProps) {
+function SectionSlide({ id, title, subtitle, summary, icon, color }: SectionProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden bg-[var(--color-bg-dark)]">
-      {/* Background Decoration */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-      >
-        <div className={`w-[60vw] h-[60vw] rounded-full bg-gradient-to-br ${color} to-transparent opacity-[0.03] blur-[100px]`} />
-      </motion.div>
+    <div className="w-full h-full flex items-center justify-center relative overflow-hidden bg-[var(--color-bg-dark)] section-panel">
+      <div
+        className={`absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] bg-gradient-to-br ${color} to-transparent`}
+      />
 
-      <div className="relative z-10 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8 relative"
-        >
-          <div className="absolute inset-0 bg-white/5 blur-xl rounded-full transform scale-150 opacity-50" />
-          <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl shadow-2xl backdrop-blur-sm">
+      <div className="relative z-10 flex max-w-5xl flex-col items-center text-center slide-fade-in">
+        <div className="mb-8 relative">
+          <div className="relative p-6 bg-white/5 border border-white/10 rounded-lg shadow-lg">
             {icon}
           </div>
           <div className="absolute -top-12 -left-12 text-[120px] font-serif font-bold opacity-[0.03] text-white select-none pointer-events-none">
             {id}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-serif text-white font-light mb-6 tracking-wider"
-        >
-          {title}
-        </motion.h2>
+        <h2 className="text-5xl md:text-7xl font-serif text-white font-light mb-6 tracking-wider">{title}</h2>
 
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-24 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent mb-6 opacity-50"
-        />
+        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent mb-6 opacity-50" />
 
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/40 font-sans text-sm md:text-base tracking-[0.3em] uppercase"
-        >
-          {subtitle}
-        </motion.p>
+        <p className="text-white/40 font-sans text-sm md:text-base tracking-[0.3em] uppercase">{subtitle}</p>
+
+        <p className="mt-8 max-w-3xl text-lg md:text-xl leading-relaxed text-white/70 font-serif tracking-wide">
+          {summary}
+        </p>
       </div>
     </div>
   );
@@ -69,11 +43,12 @@ function SectionSlide({ id, title, subtitle, icon, color }: SectionProps) {
 
 export function Section1() {
   return (
-    <SectionSlide 
+    <SectionSlide
       id="01"
-      title="进度符合度"
-      subtitle="Progress & Schedule Compliance"
-      icon={<Clock className="w-12 h-12 text-bronze" strokeWidth={1} />}
+      title="研究背景与文化对象"
+      subtitle="Communication Context / Cultural Object / Design Goals"
+      summary="从古画数字传播困境出发，明确《豳风图》的复合文化价值与系统设计目标。"
+      icon={<BookOpenText className="w-12 h-12 text-bronze" strokeWidth={1} />}
       color="from-bronze"
     />
   );
@@ -81,11 +56,12 @@ export function Section1() {
 
 export function Section2() {
   return (
-    <SectionSlide 
+    <SectionSlide
       id="02"
-      title="已完成工作"
-      subtitle="Completed Research & Achievements"
-      icon={<CheckCircle2 className="w-12 h-12 text-jade" strokeWidth={1} />}
+      title="传播学理论框架"
+      subtitle="Encoding / Affordance / Uses & Gratifications / Immersive Narrative"
+      summary="以线上数字长卷平台为对象，用编码/解码、媒介可供性、使用与满足与叙事沉浸等理论进行界面级解构分析。"
+      icon={<Radio className="w-12 h-12 text-jade" strokeWidth={1} />}
       color="from-jade"
     />
   );
@@ -93,23 +69,25 @@ export function Section2() {
 
 export function Section3() {
   return (
-    <SectionSlide 
+    <SectionSlide
       id="03"
-      title="后续规划"
-      subtitle="Future Research Plan"
-      icon={<Calendar className="w-12 h-12 text-white/80" strokeWidth={1} />}
-      color="from-blue-500"
+      title="系统技术实现"
+      subtitle="Slicing / Visual Generation / Interaction / RAG"
+      summary="围绕长卷切片、语义标注、意象视频生成、双模式交互与智能导览完成技术闭环。"
+      icon={<Cpu className="w-12 h-12 text-bronze" strokeWidth={1} />}
+      color="from-bronze"
     />
   );
 }
 
 export function Section4() {
   return (
-    <SectionSlide 
+    <SectionSlide
       id="04"
-      title="问题与困难"
-      subtitle="Challenges & Bottlenecks"
-      icon={<AlertTriangle className="w-12 h-12 text-cinnabar" strokeWidth={1} />}
+      title="成果评估与价值总结"
+      subtitle="Outcomes / Evaluation / Cultural & Technical Value"
+      summary="总结系统成果、评估路径、文化传播价值、技术贡献以及后续优化方向。"
+      icon={<Sparkles className="w-12 h-12 text-cinnabar" strokeWidth={1} />}
       color="from-cinnabar"
     />
   );

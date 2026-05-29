@@ -22,6 +22,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.slide-fade-in {
+  animation: slide-fade-in 0.45s ease-out both;
+}
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-panel,
+.section-panel {
+  contain: layout style paint;
+}
+
+.ppt-evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-fade-in {
+    animation: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
@@ -45,12 +77,4 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
-/* Texture overlay for subtle noise */
-.texture-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  z-index: 10;
-}
+/* 已移除全屏 feTurbulence 噪点层（GPU 开销大） */

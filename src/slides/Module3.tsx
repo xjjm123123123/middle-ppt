@@ -258,7 +258,7 @@ export function Slide11() {
         >
           {/* Loading Indicator */}
           {!isVideoLoaded && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 backdrop-blur-sm z-10 gap-3 transition-opacity duration-300">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-10 gap-3 transition-opacity duration-300">
               <Loader2 className="w-8 h-8 text-bronze animate-spin opacity-80" />
               <span className="text-white/50 text-xs font-sans tracking-widest uppercase">视频加载中 Loading Video...</span>
             </div>
@@ -267,10 +267,11 @@ export function Slide11() {
           <video
             src="/video/demo.mp4"
             className={`w-full h-full object-contain transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-            autoPlay
             loop
             muted
             playsInline
+            preload="none"
+            autoPlay
             onCanPlayThrough={() => setIsVideoLoaded(true)}
           />
         </motion.div>

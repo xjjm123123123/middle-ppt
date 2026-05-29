@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { motion } from 'motion/react';
 
 interface SlideProps {
   children: ReactNode;
@@ -10,13 +9,7 @@ interface SlideProps {
 
 export function Slide({ children, className = '', title, subtitle }: SlideProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`w-full h-full flex flex-col py-12 md:py-16 relative ${className}`}
-    >
+    <div className={`w-full h-full flex flex-col py-12 md:py-16 relative slide-panel ${className}`}>
       {(title || subtitle) && (
         <div className="mb-10 z-20">
           {title && (
@@ -32,9 +25,7 @@ export function Slide({ children, className = '', title, subtitle }: SlideProps)
           <div className="h-px w-12 bg-cinnabar/50 mt-6" />
         </div>
       )}
-      <div className="flex-1 relative z-20 overflow-hidden">
-        {children}
-      </div>
-    </motion.div>
+      <div className="flex-1 relative z-20 overflow-hidden min-h-0">{children}</div>
+    </div>
   );
 }

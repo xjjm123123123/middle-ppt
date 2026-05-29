@@ -2,8 +2,9 @@
   "images": [
     {
       "image_path": "image_001.png",
-      "prompt": "Animation of a scene from 'Binfeng Tu' by Ma Hezhi. Traditional Chinese ink and color painting on silk. A procession of ancient figures wearing robes walks across a landscape. They hold long, thin poles with small red accents at the tips. A horse is part of the group. The background features stylized rocks and sparse trees drawn with 'orchid leaf' brushstrokes. Soft, serene movement, historical atmosphere.",
-      "negative_prompt": "blurry, low quality, distorted, modern style, photograph, realistic, 3D render",
+      "prompt": "Animation of a scene from 'Binfeng Tu' by Ma Hezhi. A procession of ancient figures wearing robes walks across a landscape with stylized rocks and sparse trees. Soft, serene movement, historical atmosphere.",
+      "brushwork_prompt": "Ma Hezhi Southern Song court painting, mantis-horsefly line (mayihuang miao), broken-yet-linked strokes with rhythmic thickness change, orchid-leaf and hemp-fiber texture, soft ink wash gradation on silk, light mineral color, preserve hand-painted brush edges, no airbrush smoothing or 3D shading",
+      "negative_prompt": "blurry, low quality, distorted, modern style, photograph, realistic, 3D render, plastic texture, hard cinematic lighting, over-sharpened digital edges",
       "strength": 0.75,
       "num_frames": 16,
       "steps": 25,
