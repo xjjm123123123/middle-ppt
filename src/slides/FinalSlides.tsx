@@ -248,10 +248,10 @@ export function FinalSlide1() {
       <div className="absolute inset-0 bg-black/62" />
       <div className="absolute w-[72vw] h-[72vw] rounded-full border border-bronze/20 opacity-20 pointer-events-none" />
       <div className="relative z-10 max-w-6xl text-center px-8 slide-fade-in">
-        <h1 className="text-4xl md:text-6xl font-serif font-light text-white leading-tight tracking-wide">
-          基于深度学习的《豳风图》意象视频生成
-          <br />
-          <span className="text-bronze font-medium">与交互传播系统设计</span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white leading-[1.35] tracking-wide">
+          <span className="block whitespace-nowrap">基于深度学习的</span>
+          <span className="block whitespace-nowrap text-bronze font-medium">《豳风图》意象视频生成</span>
+          <span className="block whitespace-nowrap">与交互传播系统设计</span>
         </h1>
         <p className="mt-8 text-white/58 text-base tracking-[0.18em]">
           面向古画文化解码的意象视频生成、双模式交互与智能导览
